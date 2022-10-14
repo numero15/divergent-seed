@@ -1,0 +1,30 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+uniform sampler2D albedo;
+varying vec3 world_position;
+varying vec3 mesh_position;
+uniform float gradient_scale : hint_range(0,1 ,0.01 );
+uniform sampler2D gradient : hint_black;
+
+void vertex()
+{
+    world_position = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	mesh_position = (vec4(VERTEX, 1.0)).xyz;
+}
+
+void fragment(){
+	vec3 color1 = vec3(texture(gradient,vec2(mesh_position.y*gradient_scale,0.0)).rgb);
+	vec3 color2 = vec3(texture(albedo,UV).rgb);
+	vec3 output_color;
+	vec3 white = vec3(0,0,0);
+	float greyscale = dot(color1, vec3(0.299,0.587,0.114));
+	if(greyscale<.5)
+		output_color = (vec3(2,2,2) * color1.rgb - white) *(color2.rgb - color2.rgb*color2.rgb) + color2.rgb;
+	else
+		output_color = (vec3(2,2,2) * color1.rgb - white) *(sqrt(color2.rgb) - color2.rgb) + color2.rgb;
+			
+	
+	ALBEDO =output_color;
+}"

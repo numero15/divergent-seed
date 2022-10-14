@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/test01.5.map-e4867f1fcb5c9162e9b98bea3364aebd.tres"
+
+[deps]
+
+source_file="res://TrenchbroomMaps/autosave/test01.5.map"
+dest_files=[ "res://.import/test01.5.map-e4867f1fcb5c9162e9b98bea3364aebd.tres" ]
+
+[params]
+
