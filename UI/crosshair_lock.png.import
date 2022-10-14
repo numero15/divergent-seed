@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/target_lock.png-b486fa042605ece70944b70dc1a561d4.stex"
+path="res://.import/crosshair_lock.png-6d7e724ea0ea11feada7c850132b54e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://target_lock.png"
-dest_files=[ "res://.import/target_lock.png-b486fa042605ece70944b70dc1a561d4.stex" ]
+source_file="res://UI/crosshair_lock.png"
+dest_files=[ "res://.import/crosshair_lock.png-6d7e724ea0ea11feada7c850132b54e6.stex" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 extends Spatial
 
-var LockLine = preload("res://LockLine.tscn")
+var LockLine = preload("res://UI/LockLine.tscn")
 var first_lock = false
 signal setZoom
 

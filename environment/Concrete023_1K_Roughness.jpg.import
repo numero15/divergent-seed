@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/target_unlock.png-6bf642ac361e037e984bbebbf36bc02a.s3tc.stex"
-path.etc2="res://.import/target_unlock.png-6bf642ac361e037e984bbebbf36bc02a.etc2.stex"
+path.s3tc="res://.import/Concrete023_1K_Roughness.jpg-6da77c23088038345b7e6e5081ff919d.s3tc.stex"
+path.etc2="res://.import/Concrete023_1K_Roughness.jpg-6da77c23088038345b7e6e5081ff919d.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://target_unlock.png"
-dest_files=[ "res://.import/target_unlock.png-6bf642ac361e037e984bbebbf36bc02a.s3tc.stex", "res://.import/target_unlock.png-6bf642ac361e037e984bbebbf36bc02a.etc2.stex" ]
+source_file="res://environment/Concrete023_1K_Roughness.jpg"
+dest_files=[ "res://.import/Concrete023_1K_Roughness.jpg-6da77c23088038345b7e6e5081ff919d.s3tc.stex", "res://.import/Concrete023_1K_Roughness.jpg-6da77c23088038345b7e6e5081ff919d.etc2.stex" ]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/crosshair_unlock.png-450b85c0b7dd0174b905df2940b66bc8.s3tc.stex"
-path.etc2="res://.import/crosshair_unlock.png-450b85c0b7dd0174b905df2940b66bc8.etc2.stex"
+path.s3tc="res://.import/crosshair_unlock.png-1faa0a3b8001e1ec9d69983b5be1f195.s3tc.stex"
+path.etc2="res://.import/crosshair_unlock.png-1faa0a3b8001e1ec9d69983b5be1f195.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://crosshair_unlock.png"
-dest_files=[ "res://.import/crosshair_unlock.png-450b85c0b7dd0174b905df2940b66bc8.s3tc.stex", "res://.import/crosshair_unlock.png-450b85c0b7dd0174b905df2940b66bc8.etc2.stex" ]
+source_file="res://UI/crosshair_unlock.png"
+dest_files=[ "res://.import/crosshair_unlock.png-1faa0a3b8001e1ec9d69983b5be1f195.s3tc.stex", "res://.import/crosshair_unlock.png-1faa0a3b8001e1ec9d69983b5be1f195.etc2.stex" ]
 
 [params]
 

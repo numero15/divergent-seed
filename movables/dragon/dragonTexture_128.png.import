@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragonTexture_128.png-3b73e06fda2b35208a0300e8df249f59.stex"
+path="res://.import/dragonTexture_128.png-1d597e114d7a7b50c650fc6fd8d95235.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dragonTexture_128.png"
-dest_files=[ "res://.import/dragonTexture_128.png-3b73e06fda2b35208a0300e8df249f59.stex" ]
+source_file="res://movables/dragon/dragonTexture_128.png"
+dest_files=[ "res://.import/dragonTexture_128.png-1d597e114d7a7b50c650fc6fd8d95235.stex" ]
 
 [params]
 

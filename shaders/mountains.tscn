@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Concrete025_1K_Color.png" type="Texture" id=1]
+[ext_resource path="res://environment/Concrete025_1K_Color.png" type="Texture" id=1]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "mountains_Cube010"

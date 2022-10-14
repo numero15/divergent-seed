@@ -4,8 +4,8 @@ extends Spatial
 export(NodePath) onready var camera = get_node(camera)
 onready var mesh = $MeshInstance
 
-onready var texture_unlock = preload("res://crosshair_unlock.png")
-onready var texture_lock = preload("res://crosshair_lock.png")
+onready var texture_unlock = preload("res://UI/crosshair_unlock.png")
+onready var texture_lock = preload("res://UI/crosshair_lock.png")
 var is_pressed = false
 var locked_list = []
 signal enemies_locked
