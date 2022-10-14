@@ -1196,7 +1196,6 @@ bones/49/bound_children = [  ]
 [node name="Cylinder" type="MeshInstance" parent="Armature/Skeleton"]
 mesh = SubResource( 1 )
 skin = SubResource( 2 )
-material/0 = null
 
 [node name="RayCastGround" type="RayCast" parent="."]
 enabled = true

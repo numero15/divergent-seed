@@ -10,7 +10,7 @@
 [ext_resource path="res://Laser.tscn" type="PackedScene" id=8]
 [ext_resource path="res://AreaCursor.gd" type="Script" id=9]
 [ext_resource path="res://CameraRef.gd" type="Script" id=10]
-[ext_resource path="res://cloud_shader.tres" type="Shader" id=11]
+[ext_resource path="res://shaders/cloud_shader.tres" type="Shader" id=11]
 [ext_resource path="res://shaders/NoisePlane.gdshader" type="Shader" id=12]
 [ext_resource path="res://gradiant_rock.tres" type="Texture" id=13]
 [ext_resource path="res://shaders/mountains.tscn" type="PackedScene" id=14]
@@ -630,7 +630,6 @@ shape = SubResource( 24 )
 
 [node name="NoiseGround" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.9646, 0 )
-visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="NoiseGround"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 0 )
