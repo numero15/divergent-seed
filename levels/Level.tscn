@@ -527,10 +527,12 @@ script = ExtResource( 6 )
 [node name="TrailLeft" parent="DragonManager" instance=ExtResource( 18 )]
 material_override = SubResource( 53 )
 fromWidth = 0.1
+startColor = Color( 1, 1, 1, 0.196078 )
 
 [node name="TrailRight" parent="DragonManager" instance=ExtResource( 18 )]
 material_override = SubResource( 53 )
 fromWidth = 0.1
+startColor = Color( 1, 1, 1, 0.196078 )
 
 [node name="dragon_flattened" parent="DragonManager" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
