@@ -4,3 +4,4 @@
 
 [node name="Trail" type="ImmediateGeometry"]
 script = ExtResource( 1 )
+startColor = Color( 1, 1, 1, 0.317647 )

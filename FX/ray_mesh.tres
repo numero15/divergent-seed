@@ -1,0 +1,59 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode unshaded;
+//Simple 3D shader to create a force-field effect inspired by Faultless Defense from Guilty Gear Xrd.
+//In summary, it takes logic used for simple rim lighting and uses it to create the alpha instead.
+
+render_mode blend_mix,depth_draw_always,cull_back,diffuse_burley,specular_schlick_ggx;//depth_test_disable;
+uniform vec4 albedo : hint_color;
+uniform vec4 emission_color : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float emission_amount: hint_range(0.0, 16.0) = 10.0f; 
+uniform float rim_steepness : hint_range(0.0f, 16.0f) = 0.7f; //higher values mean a smaller rim.
+uniform vec3 uv_scale;
+uniform vec3 uv_offset;
+
+
+void vertex() {
+//	UV=UV*uv_scale.xy+uv_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	
+	float PI = 3.14159265359;
+	float NdotV = dot(NORMAL, VIEW);
+	float rim_light = pow(1.0 - NdotV, rim_steepness);
+	float _alpha =  1.0-UV.x;
+	_alpha = clamp(_alpha,0.0,1.0);
+	_alpha = min(albedo.a,_alpha);
+	ALPHA = _alpha;
+	ALBEDO = albedo.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/albedo = null
+shader_param/emission_color = null
+shader_param/emission_amount = 10.0
+shader_param/rim_steepness = 0.7
+shader_param/uv_scale = null
+shader_param/uv_offset = null
+
+[resource]
+resource_name = "ray_Cube"
+surfaces/0 = {
+"aabb": AABB( -0.1, -0.1, -1, 0.20001, 0.20001, 2 ),
+"array_data": PoolByteArray( 208, 204, 204, 61, 208, 204, 204, 61, 0, 0, 128, 191, 0, 120, 0, 60, 183, 132, 223, 9, 208, 204, 204, 61, 208, 204, 204, 61, 0, 0, 128, 191, 120, 0, 250, 63, 141, 6, 255, 59, 208, 204, 204, 61, 208, 204, 204, 189, 0, 0, 128, 191, 0, 136, 0, 66, 143, 5, 254, 59, 208, 204, 204, 61, 208, 204, 204, 189, 0, 0, 128, 191, 120, 0, 250, 63, 142, 6, 4, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 136, 0, 6, 63, 235, 59, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 136, 0, 66, 235, 59, 254, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 120, 0, 60, 234, 59, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 120, 0, 250, 63, 235, 59, 0, 56, 208, 204, 204, 189, 208, 204, 204, 61, 0, 0, 128, 191, 136, 0, 6, 63, 0, 0, 141, 6, 208, 204, 204, 189, 208, 204, 204, 61, 0, 0, 128, 191, 0, 120, 0, 60, 47, 133, 255, 59, 208, 204, 204, 189, 208, 204, 204, 189, 0, 0, 128, 191, 136, 0, 6, 63, 0, 0, 255, 59, 208, 204, 204, 189, 208, 204, 204, 189, 0, 0, 128, 191, 0, 136, 0, 66, 23, 5, 92, 141 ),
+"array_index_data": PoolByteArray( 0, 0, 6, 0, 9, 0, 4, 0, 10, 0, 8, 0, 11, 0, 5, 0, 2, 0, 3, 0, 7, 0, 1, 0 ),
+"blend_shape_data": [  ],
+"format": 2194711,
+"index_count": 12,
+"material": SubResource( 2 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 12
+}
