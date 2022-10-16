@@ -8,7 +8,7 @@
 [ext_resource path="res://movables/dragon/DragonManager.gd" type="Script" id=6]
 [ext_resource path="res://movables/dragon/LaserEmitter.gd" type="Script" id=7]
 [ext_resource path="res://UI/CameraRef.gd" type="Script" id=8]
-[ext_resource path="res://environment/desert.jpg" type="Texture" id=9]
+[ext_resource path="res://environment/sand_01.jpg" type="Texture" id=9]
 [ext_resource path="res://environment/skybox.jpg" type="Texture" id=10]
 [ext_resource path="res://environment/Concrete025_1K_Color.png" type="Texture" id=11]
 [ext_resource path="res://environment/gradiant_rock.tres" type="Texture" id=12]
@@ -29,14 +29,15 @@ panorama = ExtResource( 10 )
 [sub_resource type="Environment" id=42]
 background_mode = 2
 background_sky = SubResource( 52 )
-ambient_light_color = Color( 0.0666667, 0.141176, 0.627451, 1 )
-ambient_light_energy = 0.5
-ambient_light_sky_contribution = 0.0
+ambient_light_color = Color( 0.364706, 0.435294, 0.905882, 1 )
+ambient_light_energy = 0.4
+ambient_light_sky_contribution = 0.54
 fog_enabled = true
-fog_color = Color( 0.384314, 0.482353, 0.615686, 0.615686 )
-fog_depth_begin = 100.0
+fog_color = Color( 0.34902, 0.396078, 0.615686, 0.960784 )
+fog_depth_begin = 50.0
 fog_depth_end = 300.0
 tonemap_mode = 2
+dof_blur_far_enabled = true
 dof_blur_far_distance = 0.01
 dof_blur_far_transition = 244.54
 dof_blur_far_quality = 0
@@ -45,7 +46,7 @@ dof_blur_near_transition = 2.76
 dof_blur_near_quality = 0
 adjustment_enabled = true
 adjustment_contrast = 1.3
-adjustment_saturation = 0.86
+adjustment_saturation = 0.8
 
 [sub_resource type="SpatialMaterial" id=53]
 flags_transparent = true
@@ -513,12 +514,12 @@ shadow_enabled = true
 shadow_color = Color( 0.164706, 0.509804, 0.992157, 1 )
 directional_shadow_blend_splits = true
 
-[node name="Enemy" parent="." instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7285, 8, -19 )
+[node name="Enemy2" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8863, 7.75936, -24.6374 )
 collision_mask = 2
 
-[node name="Enemy2" parent="." instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1329, 11.88, 0 )
+[node name="Enemy" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7285, 8, -19 )
 collision_mask = 2
 
 [node name="DragonManager" type="Spatial" parent="."]
@@ -538,7 +539,7 @@ startColor = Color( 1, 1, 1, 0.196078 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
 turn_speed = 2.0
 pitch_speed = 2.0
-target_speed = 3
+target_speed = 9
 
 [node name="AnimationPlayer" parent="DragonManager/dragon_flattened" index="0"]
 anims/fly = SubResource( 3 )
@@ -628,7 +629,5 @@ script = ExtResource( 15 )
 [connection signal="enemies_locked" from="DragonManager/dragon_flattened/CameraPivot/CameraRef/Camera/Reticle" to="LockLines" method="add_lines"]
 [connection signal="setZoom" from="LockLines" to="DragonManager/dragon_flattened/CameraPivot/CameraRef" method="animate_length"]
 
-[editable path="Enemy"]
-[editable path="Enemy2"]
 [editable path="DragonManager/dragon_flattened"]
 [editable path="mountains"]

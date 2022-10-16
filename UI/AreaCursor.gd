@@ -6,6 +6,7 @@ onready var mesh = $MeshInstance
 
 onready var texture_unlock = preload("res://UI/crosshair_unlock.png")
 onready var texture_lock = preload("res://UI/crosshair_lock.png")
+onready var dragon_mesh = get_node("../../../..")
 var is_pressed = false
 var locked_list = []
 signal enemies_locked
@@ -42,14 +43,14 @@ func _input(event):
 		if is_pressed :
 			from = camera.project_ray_origin(mouse_pos)
 			to = from + camera.project_ray_normal(mouse_pos) * 500
-			intersection= space_state.intersect_ray(from,to)
+			intersection= space_state.intersect_ray(from,to,[dragon_mesh])
 
 	if  Settings.input_mode == Settings.InputMode.Pad and  (event.is_action_pressed("crosshair_right") or event.is_action_pressed("crosshair_left")or event.is_action_pressed("crosshair_up") or event.is_action_pressed("crosshair_down")):
 		#raycasting enemies hitboxes if mouse is pressed
 		if is_pressed :
 			from = camera.project_ray_origin(camera.unproject_position(global_transform.origin))
 			to = from + camera.project_ray_normal(camera.unproject_position(global_transform.origin)) * 500
-			intersection= space_state.intersect_ray(from,to)
+			intersection= space_state.intersect_ray(from,to,[dragon_mesh])
 	
 	if intersection and is_pressed:
 		if intersection.collider.get_collision_mask()==2 :

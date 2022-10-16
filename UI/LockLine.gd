@@ -7,7 +7,11 @@ export (NodePath) var end_node
 export (float) var speed =.5
 onready var path = get_node("Path")
 onready var pathFollow =  get_node("Path/PathFollow")
+onready var bullet = get_node("Path/PathFollow/Bullet")
+var prev_unit_offset
 
+func _ready():
+	prev_unit_offset=0
 
 func _process(delta):
 	
@@ -20,5 +24,12 @@ func _process(delta):
 	path.curve.add_point(get_node(end_node).global_transform.origin)
 
 #update bulet position
-	pathFollow.set_unit_offset(pathFollow.get_unit_offset() + speed*delta)
+	
+	pathFollow.set_unit_offset(prev_unit_offset + speed*delta)
+	prev_unit_offset = pathFollow.get_unit_offset()
+	if pathFollow.get_unit_offset()>0.9:
+		bullet.ray_visible(true)
+		
+	if pathFollow.get_unit_offset()<0.1 :
+		bullet.ray_visible(false)
 	

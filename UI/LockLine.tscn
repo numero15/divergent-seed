@@ -41,7 +41,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0 )
 }
 
-[node name="Spatial" type="Spatial"]
+[node name="LockLine" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -73,3 +73,4 @@ offset = 4.87667
 rotation_mode = 0
 
 [node name="Bullet" parent="Path/PathFollow" instance=ExtResource( 2 )]
+transform = Transform( 0.972398, -0.146409, 0.181676, 0.18611, 0.956311, -0.22546, -0.140729, 0.253049, 0.957163, 0, 0, 0 )

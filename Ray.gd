@@ -1,5 +1,6 @@
 extends Spatial
 
+export (NodePath) var pivot
 export var r = 2.0
 export var theta = .5
 export var phi = 1.0
@@ -15,4 +16,4 @@ func _process(delta):
 	_ori = Vector3(r*sin(phi)*cos(theta),r*sin(phi)*sin(theta),r*cos(phi))
 	transform.origin = _ori
 	_ori = _ori.normalized()
-	look_at(get_parent().global_transform.origin,Vector3.UP)
+	look_at(get_node(pivot).global_transform.origin,Vector3.UP)
