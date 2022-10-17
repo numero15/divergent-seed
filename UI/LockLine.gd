@@ -4,32 +4,21 @@ extends Spatial
 
 export (NodePath) var begin_node
 export (NodePath) var end_node
-export (float) var speed =.5
+export (Array, int) var partition
 onready var path = get_node("Path")
-onready var pathFollow =  get_node("Path/PathFollow")
-onready var bullet = get_node("Path/PathFollow/Bullet")
-var prev_unit_offset
 
-func _ready():
-	prev_unit_offset=0
+var bulletNode = preload("res://UI/GeocyteBullet.tscn")
 
 func _process(delta):
 	
 	if !get_node_or_null(begin_node) or !get_node_or_null(end_node)  :
 		queue_free()
 		return
-
+#	update position according to nodes position
 	path.curve = Curve3D.new()
 	path.curve.add_point(get_node(begin_node).global_transform.origin, Vector3.ZERO,Vector3(0,10,0))
 	path.curve.add_point(get_node(end_node).global_transform.origin)
 
-#update bulet position
-	
-	pathFollow.set_unit_offset(prev_unit_offset + speed*delta)
-	prev_unit_offset = pathFollow.get_unit_offset()
-	if pathFollow.get_unit_offset()>0.9:
-		bullet.ray_visible(true)
-		
-	if pathFollow.get_unit_offset()<0.1 :
-		bullet.ray_visible(false)
-	
+func _on_Timer_timeout():
+	var newBullet = bulletNode.instance()
+	path.add_child(newBullet)

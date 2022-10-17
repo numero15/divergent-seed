@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/GeocyteBullet.gd" type="Script" id=1]
+[ext_resource path="res://Ray.tscn" type="PackedScene" id=2]
+[ext_resource path="res://shaders/LightBall.gdshader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/emission_color = Color( 0.0666667, 0.988235, 0.854902, 1 )
+shader_param/emission_amount = 4.348
+shader_param/rim_steepness = 0.3
+shader_param/uv_scale = null
+shader_param/uv_offset = null
+
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 5 )
+radius = 0.35
+height = 0.7
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.580282 )
+colors = PoolColorArray( 0.0666667, 0.988235, 0.854902, 0.439216, 0.0666667, 0.988235, 0.854902, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+flags_disable_ambient_light = true
+albedo_texture = SubResource( 6 )
+
+[node name="PathFollow" type="PathFollow"]
+loop = false
+script = ExtResource( 1 )
+
+[node name="GeocyteBullet" type="Spatial" parent="."]
+transform = Transform( 0.972398, -0.146409, 0.181676, 0.18611, 0.956311, -0.225461, -0.140729, 0.253049, 0.957163, 0, 0, 0 )
+
+[node name="Mesh" type="MeshInstance" parent="GeocyteBullet"]
+transform = Transform( 1, 0, -5.96046e-08, -6.70552e-08, 1, -2.98023e-08, -7.45058e-08, 2.83122e-07, 1, -0.0011296, -0.00486521, 0.000242239 )
+mesh = SubResource( 3 )
+skeleton = NodePath("../..")
+
+[node name="Rays" type="Spatial" parent="GeocyteBullet"]
+
+[node name="ray" parent="GeocyteBullet/Rays" instance=ExtResource( 2 )]
+transform = Transform( 0.918012, 0.329045, 0.44195, -0.250979, 0.914026, -0.636902, -0.306764, 0.23688, 1.84365, 0.00220974, -0.00318451, 0.00921824 )
+pivot = NodePath("../../Mesh")
+r = 0.01
+theta = 1108.02
+phi = 621.637
+
+[node name="ray2" parent="GeocyteBullet/Rays" instance=ExtResource( 2 )]
+transform = Transform( -0.979364, 0.189605, -0.137455, 0.198715, 0.965397, -0.336648, 0.0344345, -0.178506, -1.96667, -0.000687272, -0.00168325, -0.00983333 )
+pivot = NodePath("../../Mesh")
+r = 0.01
+theta = 497.555
+phi = 895.537
+
+[node name="ray3" parent="GeocyteBullet/Rays" instance=ExtResource( 2 )]
+transform = Transform( -0.44242, 0.486815, 1.50625, -0.123301, 0.798724, -1.17766, -0.888193, -0.353369, -0.586798, 0.00753126, -0.00588828, -0.00293399 )
+pivot = NodePath("../../Mesh")
+r = 0.01
+theta = 878.982
+phi = 831.249
+
+[node name="ray4" parent="GeocyteBullet/Rays" instance=ExtResource( 2 )]
+transform = Transform( 0.969334, 0.222486, 0.207189, -0.216079, 0.973801, -0.139193, -0.116366, 0.0450771, 1.98436, 0.00103594, -0.000695955, 0.00992182 )
+pivot = NodePath("../../Mesh")
+r = 0.01
+theta = 1265.47
+phi = 119.255
+
+[node name="ray5" parent="GeocyteBullet/Rays" instance=ExtResource( 2 )]
+transform = Transform( 0.515432, 0.438208, -1.47272, 0.10031, 0.822474, 1.11955, 0.850942, -0.362385, 0.76008, -0.00736358, 0.00559773, 0.00380041 )
+pivot = NodePath("../../Mesh")
+r = 0.01
+theta = 238.111
+phi = 338.111
+
+[node name="ray6" parent="GeocyteBullet/Rays" instance=ExtResource( 2 )]
+transform = Transform( 0.979446, 0.163168, -0.23581, -0.162648, 0.986491, 0.0281995, 0.118614, 0.00536703, 1.98585, -0.00117905, 0.000141005, 0.00992925 )
+pivot = NodePath("../../Mesh")
+r = 0.01
+theta = 138.111
+phi = 138.111
+
+[node name="Cube" parent="GeocyteBullet/Rays/ray6" index="0"]
+material/0 = SubResource( 7 )
+
+[editable path="GeocyteBullet/Rays/ray"]
+[editable path="GeocyteBullet/Rays/ray2"]
+[editable path="GeocyteBullet/Rays/ray3"]
+[editable path="GeocyteBullet/Rays/ray4"]
+[editable path="GeocyteBullet/Rays/ray5"]
+[editable path="GeocyteBullet/Rays/ray6"]
