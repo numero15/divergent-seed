@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://movables/dragon/DragonMaterial.material" type="Material" id=1]
 [ext_resource path="res://movables/dragon/dragon_01.gd" type="Script" id=2]
+[ext_resource path="res://FX/CircleFX.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=3]
 resource_name = "fly"
@@ -725,9 +726,8 @@ tracks/50/imported = false
 tracks/50/enabled = true
 tracks/50/keys = PoolRealArray( 0, 1, 0, 0.40244, 0.4, 0, 0, 0, 1, 1, 1, 1, 1.66667, 1, 0, 0.40244, 0.4, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="CapsuleShape" id=5]
-radius = 2.40601
-height = 3.68899
+[sub_resource type="SphereShape" id=13]
+radius = 2.0
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "dragon_flattened_Cylinder"
@@ -926,9 +926,12 @@ material = SubResource( 10 )
 radial_segments = 4
 rings = 2
 
-[node name="dragon_flattened" type="KinematicBody"]
+[node name="dragon_flattened" type="KinematicBody" groups=["BulletListeners"]]
+collision_layer = 0
 collision_mask = 3
 script = ExtResource( 2 )
+
+[node name="CircleFX" parent="." instance=ExtResource( 3 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fly-loop"
@@ -936,7 +939,7 @@ anims/fly = SubResource( 3 )
 anims/fly-loop = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 5 )
+shape = SubResource( 13 )
 
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40244, 0.4 )

@@ -1,14 +1,22 @@
 extends Spatial
 
 var LockLine = preload("res://UI/LockLine.tscn")
-var first_lock = false
+var prevChildCount = 0
+
 signal setZoom
 
+func _process(delta):
+	if get_child_count() != 0 and prevChildCount==0:
+		emit_signal("setZoom",true)
+	if get_child_count() ==0 and prevChildCount!=0:
+		emit_signal("setZoom",false)
+		
+	prevChildCount = get_child_count()
+	
 func add_lines(_ids:Array):
 	
 	var toRemove = null
-	
-	if get_child_count()==0 : first_lock = true
+
 	for id in _ids: 
 		toRemove = null
 		for line in get_children():
@@ -19,14 +27,7 @@ func add_lines(_ids:Array):
 			lockLine_instance.begin_node =  instance_from_id(id).get_path()
 			lockLine_instance.end_node = get_node("../DragonManager/dragon_flattened").get_path()
 			add_child(lockLine_instance)
+			lockLine_instance.connect("lockLineRemoved", self, "_lockLineRemoved")
 		else : 
 			remove_child(toRemove)
-		
-#		send zoom signal if first lock	
-		if first_lock and get_child_count()!=0 : emit_signal("setZoom",true)
-		
-#		send dezoom signal if last lock ended
-		if !first_lock and get_child_count()==0 : emit_signal("setZoom",false)
-				
-		if get_child_count()==0 : first_lock = true
-		else : first_lock = false
+

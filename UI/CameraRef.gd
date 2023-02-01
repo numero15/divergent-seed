@@ -25,13 +25,14 @@ export (float) var far_length = 30.0
 
 #mouse control
 var mouse_sensitivity = 0.15
-var stick_sensitivity = 1.8
+var stick_sensitivity = 1.0
 #var camera_anglev=0
 var input_strength
 onready var pivot = get_parent()
 
 func _ready():
 	spring_length = far_length
+	add_excluded_object(RID(pivot.get_parent()))
 
 func _input(event):     
 	if event is InputEventMouseMotion and Settings.input_mode == Settings.InputMode.Keyboard:
@@ -51,7 +52,11 @@ func _input(event):
 func _physics_process(delta):
 	if Settings.input_mode == Settings.InputMode.Pad :
 		input_strength =  Input.get_action_strength("pan_left")- Input.get_action_strength("pan_right")
-		rotate_y(input_strength * stick_sensitivity * delta)
+		pivot.rotate_y(input_strength * stick_sensitivity * delta)
+		
+		input_strength =  Input.get_action_strength("crosshair_up")- Input.get_action_strength("crosshair_down")
+		rotate_x(input_strength * stick_sensitivity * delta)
+		rotation_degrees.x = clamp(rotation_degrees.x,-30,10)
 		
 	else :
 		pass
@@ -62,4 +67,5 @@ func animate_length(zoom_in:bool):
 		tween.tween_property(self,"spring_length",near_length,1)
 	else :
 		tween.tween_property(self,"spring_length",far_length,1)
+	pass
 

@@ -1,12 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/LockLine.gd" type="Script" id=1]
-[ext_resource path="res://UI/GeocyteBullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://shaders/LockLineShader.tres" type="Material" id=3]
 
 [sub_resource type="Animation" id=6]
 resource_name = "LockLineFadeIn"
-length = 10.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CSGPolygon:material:shader_param/dissolve_amount")
 tracks/0/interp = 1
@@ -14,10 +13,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 10 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0, 1.0 ]
+"values": [ 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -41,7 +40,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0 )
 }
 
-[node name="LockLine" type="Spatial"]
+[node name="LockLine" type="Spatial" groups=["BulletListeners"]]
 script = ExtResource( 1 )
 partition = [ 1, 1, 2, 3 ]
 
@@ -70,9 +69,5 @@ material = ExtResource( 3 )
 
 [node name="Path" type="Path" parent="."]
 curve = SubResource( 1 )
-
-[node name="Bullet" parent="Path" instance=ExtResource( 2 )]
-transform = Transform( -0.968397, -0.242414, 0.0586574, -0.113255, 0.636948, 0.762541, -0.222214, 0.7318, -0.644273, -4.66702, -2.97095, -2.78381 )
-visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

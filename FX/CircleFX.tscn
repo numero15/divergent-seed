@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://shaders/circleFX_shader.tres" type="Shader" id=1]
+[ext_resource path="res://FX/CircleFX.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=5]
 resource_name = "CircleFXAnimation"
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Circle001:scale")
 tracks/0/interp = 1
@@ -9,32 +14,54 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 2 ),
 "update": 0,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 2, 2, 2 ) ]
+"values": [ Vector3( 0.2, 0.2, 0.2 ), Vector3( 2.5, 2.5, 2.5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Circle001:material/0:albedo_color")
+tracks/1/path = NodePath("Circle001:material/0:shader_param/color_end")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.368627, 1, 0.45098 ), Color( 0.0666667, 0.988235, 0.854902, 0.435294 ), Color( 0, 0.368627, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Circle001:material/0:shader_param/offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, 0.0, 6.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Circle002:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.490196, 0.0117647, 0.0117647, 1 ) ]
+"values": [ Vector3( 0.5, 0.5, 0.5 ), Vector3( 3.5, 3.5, 3.5 ) ]
 }
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.8, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0 )
-
-[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.479381, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.227451 )
 
 [sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 6 )
+gradient = SubResource( 2 )
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -86,6 +113,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Circle001:material/0:shader_param/color_end")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Circle001:material/0:shader_param/offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Circle002:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1.175, 1.175, 1.175 ) ]
+}
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "circle_Circle001"
@@ -101,15 +164,14 @@ surfaces/0 = {
 "vertex_count": 34
 }
 
-[sub_resource type="SpatialMaterial" id=4]
-flags_transparent = true
-flags_unshaded = true
-flags_do_not_receive_shadows = true
-flags_disable_ambient_light = true
-params_cull_mode = 2
-albedo_texture = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 1 )
+shader_param/offset = 0.8
+shader_param/color_start = Color( 0.145098, 0.156863, 0.894118, 0 )
+shader_param/color_end = Color( 1, 0, 0, 1 )
 
 [node name="CircleFX" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/CircleFXAnimation = SubResource( 5 )
@@ -118,4 +180,9 @@ anims/RESET = SubResource( 7 )
 [node name="Circle001" type="MeshInstance" parent="."]
 transform = Transform( 1.73205, 1, 0, -1, 1.73205, 0, 0, 0, 2, 0, 0, 0 )
 mesh = SubResource( 1 )
-material/0 = SubResource( 4 )
+material/0 = SubResource( 8 )
+
+[node name="Circle002" type="MeshInstance" parent="."]
+transform = Transform( -0.662364, 0.970515, 0, -0.970515, -0.662364, 0, 0, 0, 1.175, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 8 )

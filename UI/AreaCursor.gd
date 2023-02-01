@@ -70,8 +70,8 @@ func _physics_process(delta):
 #	stick input
 	if Settings.input_mode == Settings.InputMode.Pad :
 		var new_pos = Vector2.ZERO
-		new_pos.x = (Input.get_action_strength("crosshair_right") - Input.get_action_strength("crosshair_left"))*delta*30
-		new_pos.y = (Input.get_action_strength("crosshair_up") - Input.get_action_strength("crosshair_down"))*delta*30
+		new_pos.x = (Input.get_action_strength("crosshair_right") - Input.get_action_strength("crosshair_left"))*delta*10
+		new_pos.y = (Input.get_action_strength("crosshair_up") - Input.get_action_strength("crosshair_down"))*delta*10
 		transform.origin.x+=new_pos.x
 		transform.origin.y+=new_pos.y
 		transform.origin.x = clamp(transform.origin.x,-12,12)

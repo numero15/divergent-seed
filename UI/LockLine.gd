@@ -6,12 +6,14 @@ export (NodePath) var begin_node
 export (NodePath) var end_node
 export (Array, int) var partition
 onready var path = get_node("Path")
-
+onready var trailPolygon = get_node("CSGPolygon")
 var bulletNode = preload("res://UI/GeocyteBullet.tscn")
+var dissolveAmout = 0.5
+
 
 func _process(delta):
 	
-	if !get_node_or_null(begin_node) or !get_node_or_null(end_node)  :
+	if !get_node_or_null(begin_node) or !get_node_or_null(end_node)  :		
 		queue_free()
 		return
 #	update position according to nodes position
@@ -21,4 +23,15 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	var newBullet = bulletNode.instance()
+	newBullet.emitterNodePath = begin_node
 	path.add_child(newBullet)
+
+func bullet_intercepted(_targetPath):
+	pass
+
+func bullet_missed(_targetPath):
+	dissolveAmout+=0.05
+	if dissolveAmout >= 1.0 :
+		queue_free()
+	trailPolygon.material.set_shader_param("dissolve_amount", dissolveAmout)
+	
