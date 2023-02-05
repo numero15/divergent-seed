@@ -32,7 +32,7 @@ void fragment() {
 [resource]
 resource_local_to_scene = true
 shader = SubResource( 2 )
-shader_param/albedo = Color( 0.0666667, 0.988235, 0.854902, 0.156863 )
+shader_param/albedo = Color( 0.945098, 1, 0.992157, 0.12549 )
 shader_param/emission_color = Color( 1, 1, 1, 0 )
 shader_param/emission_amount = 3.0
 shader_param/burn_size = 0.0

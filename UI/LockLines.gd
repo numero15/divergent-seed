@@ -7,9 +7,9 @@ signal setZoom
 
 func _process(delta):
 	if get_child_count() != 0 and prevChildCount==0:
-		emit_signal("setZoom",true)
-	if get_child_count() ==0 and prevChildCount!=0:
 		emit_signal("setZoom",false)
+	if get_child_count() ==0 and prevChildCount!=0:
+		emit_signal("setZoom",true)
 		
 	prevChildCount = get_child_count()
 	
