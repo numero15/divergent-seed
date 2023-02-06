@@ -23,7 +23,7 @@ varying vec3 world_position;
 varying vec3 mesh_position;
 varying vec3 vertex_pos;
 uniform float gradient_scale : hint_range(0,5);
-uniform float gradient_offset : hint_range(-10,10 ,0.001 );
+uniform float gradient_offset : hint_range(-1000,1000 ,0.001 );
 uniform sampler2D gradient : hint_black;
 
 

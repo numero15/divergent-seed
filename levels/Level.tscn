@@ -33,9 +33,9 @@ panorama = ExtResource( 10 )
 [sub_resource type="Environment" id=42]
 background_mode = 2
 background_sky = SubResource( 52 )
-ambient_light_color = Color( 0.364706, 0.435294, 0.905882, 1 )
-ambient_light_energy = 0.4
-ambient_light_sky_contribution = 0.54
+ambient_light_color = Color( 0.401123, 0.456819, 0.828125, 1 )
+ambient_light_energy = 0.85
+ambient_light_sky_contribution = 0.08
 fog_enabled = true
 fog_color = Color( 0.34902, 0.396078, 0.615686, 0.960784 )
 fog_depth_begin = 50.0
@@ -551,7 +551,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8863, 7.75936, -24.6374 )
 collision_mask = 2
 
 [node name="lvl01_rock_01" parent="." instance=ExtResource( 25 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.87302, 0 )
 
 [node name="lvl01" parent="." instance=ExtResource( 26 )]
 transform = Transform( -0.249552, 0, -0.968361, 0, 1, 0, 0.968361, 0, -0.249552, 19.7959, 75.4531, -332.748 )
@@ -713,5 +712,6 @@ shape = SubResource( 55 )
 [connection signal="enemies_locked" from="DragonManager/dragon_flattened/CameraPivot/CameraRef/Camera/Reticle" to="LockLines" method="add_lines"]
 [connection signal="setZoom" from="LockLines" to="DragonManager/dragon_flattened/CameraPivot/CameraRef" method="animate_length"]
 
+[editable path="lvl01"]
 [editable path="DragonManager/dragon_flattened"]
 [editable path="mountains"]

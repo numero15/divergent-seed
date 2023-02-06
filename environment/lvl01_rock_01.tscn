@@ -2,7 +2,7 @@
 
 [ext_resource path="res://environment/lvl01_rock_01.glb" type="PackedScene" id=1]
 [ext_resource path="res://shaders/StripesTriplanar.tres" type="Shader" id=2]
-[ext_resource path="res://environment/Mountain_rock.jpg" type="Texture" id=3]
+[ext_resource path="res://environment/rock_dot.jpg" type="Texture" id=3]
 [ext_resource path="res://environment/gradiant_rock.tres" type="Texture" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -18,7 +18,7 @@ shader_param/uv1_offset = null
 shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = null
 shader_param/gradient_scale = 0.006
-shader_param/gradient_offset = 10.0
+shader_param/gradient_offset = -78.462
 shader_param/texture_albedo = ExtResource( 3 )
 shader_param/gradient = ExtResource( 4 )
 
