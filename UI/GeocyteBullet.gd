@@ -14,7 +14,7 @@ var tween
 func _ready():
 	tween= create_tween()
 #	needs to be changed to follow the BPM
-	tween.tween_property(self, "unit_offset",1.0,2.0)
+	tween.tween_property(self, "unit_offset",1.0,60/float(Settings.bpm)*4)
 	tween.connect("finished", self, "tweenEnded")
 
 func tweenEnded():

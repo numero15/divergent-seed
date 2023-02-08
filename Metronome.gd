@@ -1,9 +1,9 @@
 extends Timer
 
-export (int) var bpm 
+
 
 func _ready():
-	wait_time = 60/float(bpm)
+	wait_time = 60/float(Settings.bpm)
 	one_shot = false
 	autostart = true
 

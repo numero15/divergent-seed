@@ -537,7 +537,6 @@ script = ExtResource( 14 )
 
 [node name="Metronome" type="Timer" parent="."]
 script = ExtResource( 29 )
-bpm = 120
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 42 )
