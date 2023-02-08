@@ -11,7 +11,6 @@ func spawn(targets:Array):
 		laser_instance= Laser.instance()
 		target = instance_from_id(id)
 		get_tree().get_root().get_node("Level").add_child(laser_instance)
-		print('spawn')
 		laser_instance.target_id = id
 		laser_instance.transform.origin = parent.transform.origin
 		laser_instance.direction =   (target.transform.origin -  laser_instance.transform.origin).normalized()
