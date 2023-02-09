@@ -146,28 +146,29 @@ texture = ExtResource( 2 )
 transform = Transform( -3.31152e-08, -0.757588, -0.652733, 2.85319e-08, 0.652733, -0.757588, 1, -4.37114e-08, 1.91069e-15, -0.940461, 0.73571, 0 )
 mesh = SubResource( 58 )
 
-[node name="Partition" type="Spatial" parent="."]
+[node name="Partition" type="Node" parent="."]
 
-[node name="Stave" type="Spatial" parent="Partition"]
+[node name="Stave" type="Node" parent="Partition"]
 script = ExtResource( 8 )
-array = [ [ null, null ], [ null, null ], [ null, null ], [ null, null ] ]
 
-[node name="Note" type="Spatial" parent="Partition/Stave"]
+[node name="Note" type="Node" parent="Partition/Stave"]
 script = ExtResource( 9 )
 duration = 1
 sound = ExtResource( 10 )
 
-[node name="Note2" type="Spatial" parent="Partition/Stave"]
+[node name="Note2" type="Node" parent="Partition/Stave"]
 script = ExtResource( 9 )
 duration = 2
 sound = ExtResource( 11 )
 
-[node name="Note3" type="Spatial" parent="Partition/Stave"]
+[node name="Note3" type="Node" parent="Partition/Stave"]
 script = ExtResource( 9 )
 duration = 1
 sound = ExtResource( 10 )
 
-[node name="Note4" type="Spatial" parent="Partition/Stave"]
+[node name="Note4" type="Node" parent="Partition/Stave"]
 script = ExtResource( 9 )
 duration = 2
 sound = ExtResource( 11 )
+
+[node name="StateMachine" type="Node" parent="."]

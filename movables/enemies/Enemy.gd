@@ -3,8 +3,8 @@ extends KinematicBody
 onready var partition = get_node("Partition")
 
 var currentStave
-export var health = 100
-var damage = 5
+export var health = 4
+var damage = 1
 
 func startStave():
 #	todo : selection stave methode

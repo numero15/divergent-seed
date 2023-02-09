@@ -54,6 +54,7 @@ func _input(event):
 	
 	if intersection and is_pressed:
 		if intersection.collider.get_collision_mask()==2 :
+			print('geocyte')
 			update_locked(intersection.collider_id)
 
 func _physics_process(delta):

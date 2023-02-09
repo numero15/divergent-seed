@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://UI/crosshair_unlock.png" type="Texture" id=1]
 [ext_resource path="res://shaders/NoisePlane.gdshader" type="Shader" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://environment/Mountain_rock.jpg" type="Texture" id=27]
 [ext_resource path="res://shaders/water.tres" type="Shader" id=28]
 [ext_resource path="res://Metronome.gd" type="Script" id=29]
+[ext_resource path="res://movables/enemies/Geocyte_01.tscn" type="PackedScene" id=30]
 
 [sub_resource type="PanoramaSky" id=52]
 panorama = ExtResource( 10 )
@@ -37,18 +38,17 @@ panorama = ExtResource( 10 )
 background_mode = 2
 background_sky = SubResource( 52 )
 ambient_light_color = Color( 0.401123, 0.456819, 0.828125, 1 )
-ambient_light_energy = 0.85
-ambient_light_sky_contribution = 0.08
+ambient_light_sky_contribution = 0.5
 fog_enabled = true
 fog_color = Color( 0.34902, 0.396078, 0.615686, 0.960784 )
 fog_depth_begin = 50.0
 fog_depth_end = 300.0
 tonemap_mode = 2
-dof_blur_far_distance = 0.01
-dof_blur_far_transition = 244.54
+dof_blur_far_distance = 75.0
+dof_blur_far_transition = 48.34
 dof_blur_far_quality = 0
-dof_blur_near_distance = 12.09
-dof_blur_near_transition = 2.76
+dof_blur_near_distance = 30.0
+dof_blur_near_transition = 5.0
 dof_blur_near_quality = 0
 adjustment_enabled = true
 adjustment_contrast = 1.7
@@ -450,7 +450,7 @@ albedo_texture = ExtResource( 1 )
 
 [sub_resource type="ShaderMaterial" id=23]
 shader = ExtResource( 3 )
-shader_param/out_color = Color( 0.721569, 0.490196, 0.992157, 1 )
+shader_param/out_color = Color( 0.631373, 0.545098, 0.392157, 1 )
 shader_param/transparency = 0.15
 
 [sub_resource type="BoxShape" id=24]
@@ -550,27 +550,29 @@ shadow_enabled = true
 shadow_color = Color( 0.164706, 0.509804, 0.992157, 1 )
 directional_shadow_blend_splits = true
 
-[node name="Enemy2" parent="." instance=ExtResource( 21 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -37.851, 107.744, -47.7198 )
+[node name="Geocytes" type="Spatial" parent="."]
+transform = Transform( 0.0885231, 0, 0.260531, 0, 0.275159, 0, -0.260531, 0, 0.0885231, 37.4422, 84.6189, 25.1686 )
+
+[node name="Enemy" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 190.601, 88.0599, -127.528 )
+
+[node name="MovableGeocyte" type="Path" parent="Geocytes"]
+transform = Transform( 1.1692, 0, -3.44105, 0, 3.63426, 0, 3.44105, 0, 1.1692, 79.2964, -278.453, -265.574 )
+curve = SubResource( 57 )
+
+[node name="PathFollow" type="PathFollow" parent="Geocytes/MovableGeocyte"]
+transform = Transform( -0.969235, -0.0614516, 0.238344, 0.0210223, 0.944126, 0.328911, -0.245238, 0.323802, -0.913788, -62.6279, 21.9496, -14.3655 )
+offset = 257.08
+script = ExtResource( 24 )
+
+[node name="Enemy" parent="Geocytes/MovableGeocyte/PathFollow" instance=ExtResource( 21 )]
+transform = Transform( -0.87429, -0.121946, 0.469837, 0.19638, 0.796316, 0.572115, -0.443906, 0.592461, -0.672263, 0, 0, 0 )
 collision_mask = 2
 
 [node name="lvl01_rock_01" parent="." instance=ExtResource( 25 )]
 
 [node name="lvl01" parent="." instance=ExtResource( 26 )]
 transform = Transform( -0.249552, 0, -0.968361, 0, 1, 0, 0.968361, 0, -0.249552, 19.7959, 75.4531, -332.748 )
-
-[node name="PathEnemy" type="Path" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7285, 8, -19 )
-curve = SubResource( 57 )
-
-[node name="PathFollow" type="PathFollow" parent="PathEnemy"]
-transform = Transform( -0.969235, -0.0614516, 0.238344, 0.0210223, 0.944126, 0.328911, -0.245238, 0.323802, -0.913788, -62.6279, 21.9496, -14.3655 )
-offset = 257.08
-script = ExtResource( 24 )
-
-[node name="Enemy" parent="PathEnemy/PathFollow" instance=ExtResource( 21 )]
-transform = Transform( -0.87429, -0.121946, 0.469837, 0.19638, 0.796316, 0.572115, -0.443906, 0.592461, -0.672263, 0, 0, 0 )
-collision_mask = 2
 
 [node name="DragonManager" type="Spatial" parent="."]
 script = ExtResource( 6 )
@@ -637,14 +639,26 @@ software_skinning_transform_normals = false
 material/0 = SubResource( 21 )
 
 [node name="Cloud" type="Area" parent="."]
-transform = Transform( 63.747, 0, 0, 0, 1, 0, 0, 0, 64.181, 0, 36.3319, -67 )
-visible = false
+transform = Transform( 63.747, 0, 0, 0, 1, 0, 0, 0, 64.181, 0, 33.5042, -67 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Cloud"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50.4273, 0 )
 mesh = SubResource( 22 )
 material/0 = SubResource( 23 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Cloud"]
+shape = SubResource( 24 )
+
+[node name="Cloud2" type="Area" parent="."]
+transform = Transform( 63.747, 0, 0, 0, 1, 0, 0, 0, 64.181, 0, 29.1175, -67 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Cloud2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 56.5826, 0 )
+mesh = SubResource( 22 )
+material/0 = SubResource( 23 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cloud2"]
 shape = SubResource( 24 )
 
 [node name="NoiseGround" type="Area" parent="."]
@@ -714,6 +728,7 @@ shape = SubResource( 55 )
 
 [node name="Water" type="MeshInstance" parent="."]
 transform = Transform( 0.657993, 0, 2.61295, 0, 1, 0, -0.753024, 0, 2.2832, -76.0132, 82.7418, -114.615 )
+visible = false
 mesh = SubResource( 59 )
 material/0 = SubResource( 60 )
 
