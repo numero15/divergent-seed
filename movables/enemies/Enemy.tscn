@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://movables/enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://movables/enemies/geocyte01Mesh.tres" type="ArrayMesh" id=5]
 [ext_resource path="res://movables/enemies/geoctye_01_02.jpg" type="Texture" id=6]
 [ext_resource path="res://environment/treeDot02.jpg" type="Texture" id=7]
+[ext_resource path="res://movables/enemies/Stave.gd" type="Script" id=8]
+[ext_resource path="res://movables/enemies/Note.gd" type="Script" id=9]
+[ext_resource path="res://audio/enemies/sample_00.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/enemies/fail_sample_00.wav" type="AudioStream" id=11]
 
 [sub_resource type="SphereShape" id=16]
 radius = 2.3388
@@ -141,3 +145,29 @@ texture = ExtResource( 2 )
 [node name="Irridescent" type="MeshInstance" parent="."]
 transform = Transform( -3.31152e-08, -0.757588, -0.652733, 2.85319e-08, 0.652733, -0.757588, 1, -4.37114e-08, 1.91069e-15, -0.940461, 0.73571, 0 )
 mesh = SubResource( 58 )
+
+[node name="Partition" type="Spatial" parent="."]
+
+[node name="Stave" type="Spatial" parent="Partition"]
+script = ExtResource( 8 )
+array = [ [ null, null ], [ null, null ], [ null, null ], [ null, null ] ]
+
+[node name="Note" type="Spatial" parent="Partition/Stave"]
+script = ExtResource( 9 )
+duration = 1
+sound = ExtResource( 10 )
+
+[node name="Note2" type="Spatial" parent="Partition/Stave"]
+script = ExtResource( 9 )
+duration = 2
+sound = ExtResource( 11 )
+
+[node name="Note3" type="Spatial" parent="Partition/Stave"]
+script = ExtResource( 9 )
+duration = 1
+sound = ExtResource( 10 )
+
+[node name="Note4" type="Spatial" parent="Partition/Stave"]
+script = ExtResource( 9 )
+duration = 2
+sound = ExtResource( 11 )

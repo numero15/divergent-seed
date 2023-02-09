@@ -5,7 +5,7 @@
 
 [sub_resource type="Animation" id=6]
 resource_name = "LockLineFadeIn"
-length = 2.0
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CSGPolygon:material:shader_param/dissolve_amount")
 tracks/0/interp = 1
@@ -13,7 +13,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
@@ -40,12 +40,9 @@ _data = {
 "tilts": PoolRealArray( 0, 0 )
 }
 
-[node name="LockLine" type="Spatial" groups=["BulletListeners"]]
+[node name="LockLine" type="Spatial" groups=["BeatListeners", "BulletListeners"]]
 script = ExtResource( 1 )
 partition = [ 1, 1, 2, 3 ]
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "LockLineFadeIn"
@@ -69,5 +66,3 @@ material = ExtResource( 3 )
 
 [node name="Path" type="Path" parent="."]
 curve = SubResource( 1 )
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
