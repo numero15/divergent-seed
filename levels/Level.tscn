@@ -533,9 +533,8 @@ shader_param/tile = 4.0
 shader_param/caustics = ExtResource( 27 )
 
 [node name="Level" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3018, 0.584351, -2.01055 )
 script = ExtResource( 14 )
-bpm = 60
-lerpPitch = false
 
 [node name="Metronome" type="Timer" parent="."]
 script = ExtResource( 29 )
@@ -556,8 +555,7 @@ directional_shadow_blend_splits = true
 transform = Transform( 0.0885231, 0, 0.260531, 0, 0.275159, 0, -0.260531, 0, 0.0885231, 37.4422, 84.6189, 25.1686 )
 
 [node name="Geocyte01" parent="Geocytes" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 190.601, 88.0599, -127.528 )
-lockLineDuration = 1
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 407.676, 88.0599, 382.291 )
 
 [node name="MovableGeocyte" type="Path" parent="Geocytes"]
 transform = Transform( 1.1692, 0, -3.44105, 0, 3.63426, 0, 3.44105, 0, 1.1692, 79.2964, 29.2288, -265.574 )
@@ -593,7 +591,7 @@ fromWidth = 0.1
 startColor = Color( 1, 1, 1, 0.0588235 )
 
 [node name="dragon_flattened" parent="DragonManager" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.148, -191.125 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 148.703, 104.148, -10.76 )
 min_flight_speed = 5
 turn_speed = 2.0
 pitch_speed = 2.0
@@ -712,7 +710,7 @@ transform = Transform( 1200, 0, 0, 0, 1, 0, 0, 0, 1200, 0, 5.57977, 0 )
 shape = SubResource( 55 )
 
 [node name="Forest2" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -552.536, 16.1801, -397.144 )
+transform = Transform( 0.735544, 0.345588, 0.582705, -0.425242, 0.90508, 0, -0.527394, -0.247791, 0.812684, -286.905, 60.0556, -227.493 )
 collision_layer = 2
 
 [node name="Sphere" parent="Forest2" instance=ExtResource( 19 )]
