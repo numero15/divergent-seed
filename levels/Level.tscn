@@ -533,7 +533,6 @@ shader_param/tile = 4.0
 shader_param/caustics = ExtResource( 27 )
 
 [node name="Level" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3018, 0.584351, -2.01055 )
 script = ExtResource( 14 )
 
 [node name="Metronome" type="Timer" parent="."]
@@ -591,6 +590,7 @@ fromWidth = 0.1
 startColor = Color( 1, 1, 1, 0.0588235 )
 
 [node name="dragon_flattened" parent="DragonManager" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 155.152, 114.836, 0 )
 min_flight_speed = 5
 turn_speed = 2.0
 pitch_speed = 2.0

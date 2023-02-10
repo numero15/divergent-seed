@@ -29,7 +29,7 @@ func _process(delta):
 
 #listen to the metronome event
 func on_beat():
-	if get_node(begin_node) == null :
+	if !get_node_or_null(begin_node) or !get_node_or_null(end_node) :
 		pass
 	
 #	start a new stave if none is active
