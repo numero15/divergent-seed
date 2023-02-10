@@ -591,7 +591,6 @@ fromWidth = 0.1
 startColor = Color( 1, 1, 1, 0.0588235 )
 
 [node name="dragon_flattened" parent="DragonManager" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 148.703, 104.148, -10.76 )
 min_flight_speed = 5
 turn_speed = 2.0
 pitch_speed = 2.0
@@ -599,6 +598,9 @@ target_speed = 9
 
 [node name="AnimationPlayer" parent="DragonManager/dragon_flattened" index="1"]
 anims/fly = SubResource( 3 )
+
+[node name="Armature" parent="DragonManager/dragon_flattened" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="RayCastGround" parent="DragonManager/dragon_flattened" index="4"]
 cast_to = Vector3( 0, -6, 0 )

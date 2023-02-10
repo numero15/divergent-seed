@@ -29,6 +29,9 @@ func _process(delta):
 
 #listen to the metronome event
 func on_beat():
+	if get_node(begin_node) == null :
+		pass
+	
 #	start a new stave if none is active
 	if currentNoteIndex == -1:
 		startNewStave()
