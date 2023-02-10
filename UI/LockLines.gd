@@ -27,7 +27,7 @@ func add_lines(_ids:Array):
 			lockLine_instance.begin_node =  instance_from_id(id).get_path()
 			lockLine_instance.end_node = get_node("../DragonManager/dragon_flattened").get_path()
 			add_child(lockLine_instance)
-			lockLine_instance.connect("lockLineRemoved", self, "_lockLineRemoved")
+#			lockLine_instance.connect("lockLineRemoved", self, "_lockLineRemoved")
 		else : 
 			remove_child(toRemove)
 

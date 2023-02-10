@@ -8,5 +8,6 @@ func _ready():
 	autostart = true
 
 func _on_Metronome_timeout():
+	wait_time = 60/float(Settings.bpm)
 	get_tree().call_group("BeatListeners","on_beat")
 

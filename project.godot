@@ -9,16 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "ResourceFormatLoader",
-"class": "HTerrainDataLoader",
-"language": "GDScript",
-"path": "res://addons/zylann.hterrain/hterrain_resource_loader.gd"
-}, {
-"base": "ResourceFormatSaver",
-"class": "HTerrainDataSaver",
-"language": "GDScript",
-"path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
-}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
@@ -30,8 +20,6 @@ _global_script_classes=[ {
 "path": "res://movables/StateMachine.gd"
 } ]
 _global_script_class_icons={
-"HTerrainDataLoader": "",
-"HTerrainDataSaver": "",
 "State": "",
 "StateMachine": ""
 }
@@ -51,10 +39,6 @@ Settings="*res://Settings.gd"
 window/size/width=854
 window/size/height=480
 window/vsync/vsync_via_compositor=true
-
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/zylann.hterrain/plugin.cfg" )
 
 [input]
 

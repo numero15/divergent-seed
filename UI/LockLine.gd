@@ -56,6 +56,7 @@ func add_bullet():
 	var newBullet = bulletNode.instance()
 	newBullet.emitterNodePath = begin_node
 	newBullet.soundPath = get_node(currentStavePath).get_child(currentNoteIndex).sound
+	newBullet.beatsToGoal = get_node(begin_node).lockLineDuration
 	path.add_child(newBullet)
 	beat_count = 0
 	

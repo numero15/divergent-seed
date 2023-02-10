@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://movables/StateMachine.gd" type="Script" id=1]
-[ext_resource path="res://movables/enemies/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://movables/enemies/old/Enemy.gd" type="Script" id=2]
 
 [node name="Geocyte" type="KinematicBody" groups=["BulletListeners"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
+lockLineDuration = 2
 
 [node name="Partition" type="Node" parent="."]
 

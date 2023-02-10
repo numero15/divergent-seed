@@ -6,7 +6,7 @@
 [ext_resource path="res://shaders/StripesTriplanar.tres" type="Shader" id=4]
 [ext_resource path="res://environment/mountain_smooth.tres" type="ArrayMesh" id=5]
 [ext_resource path="res://movables/dragon/DragonManager.gd" type="Script" id=6]
-[ext_resource path="res://movables/dragon/LaserEmitter.gd" type="Script" id=7]
+[ext_resource path="res://movables/dragon/old/LaserEmitter.gd" type="Script" id=7]
 [ext_resource path="res://UI/CameraRef.gd" type="Script" id=8]
 [ext_resource path="res://environment/sand_01.jpg" type="Texture" id=9]
 [ext_resource path="res://environment/skybox.jpg" type="Texture" id=10]
@@ -20,16 +20,16 @@
 [ext_resource path="res://movables/Trail.tscn" type="PackedScene" id=18]
 [ext_resource path="res://environment/TreeSphereMesh.tscn" type="PackedScene" id=19]
 [ext_resource path="res://shaders/mountains.tscn" type="PackedScene" id=20]
-[ext_resource path="res://movables/enemies/Enemy.tscn" type="PackedScene" id=21]
-[ext_resource path="res://movables/dragon/Laser.tscn" type="PackedScene" id=22]
+[ext_resource path="res://movables/enemies/old/Enemy.tscn" type="PackedScene" id=21]
+[ext_resource path="res://movables/dragon/old/Laser.tscn" type="PackedScene" id=22]
 [ext_resource path="res://UI/ScreenEffects.tscn" type="PackedScene" id=23]
-[ext_resource path="res://PathFollowEnemy.gd" type="Script" id=24]
+[ext_resource path="res://movables/enemies/PathFollowEnemy.gd" type="Script" id=24]
 [ext_resource path="res://environment/lvl01_rock_01.tscn" type="PackedScene" id=25]
 [ext_resource path="res://environment/lvl01.tscn" type="PackedScene" id=26]
 [ext_resource path="res://environment/Mountain_rock.jpg" type="Texture" id=27]
 [ext_resource path="res://shaders/water.tres" type="Shader" id=28]
 [ext_resource path="res://Metronome.gd" type="Script" id=29]
-[ext_resource path="res://movables/enemies/Geocyte_01.tscn" type="PackedScene" id=30]
+[ext_resource path="res://movables/enemies/geocyte01/Geocyte_01.tscn" type="PackedScene" id=30]
 
 [sub_resource type="PanoramaSky" id=52]
 panorama = ExtResource( 10 )
@@ -56,7 +56,7 @@ adjustment_saturation = 0.7
 
 [sub_resource type="Curve3D" id=57]
 _data = {
-"points": PoolVector3Array( -1.97234, -4.1565, 16.866, 1.97234, 4.1565, -16.866, 51.4219, 0.737189, 5.83273, 0, 0, 0, 0, 0, 0, 32.7431, 4.85568, -35.0235, 0, 0, 0, 0, 0, 0, 32.7431, 6.14334, -68.5026, 11.1582, 2.55133, -5.2292, -11.1582, -2.55133, 5.2292, -42.8474, -1.71848, -98.7541, 7.51534, 3.03033, -7.35196, -7.51534, -3.03033, 7.35196, -46.428, 5.81873, -66.7023, -1.50629, 5.46336, -16.25, 1.50629, -5.46336, 16.25, -62.4902, 21.1477, -9.6605, -10.2563, 8.8127, 8.67692, 10.2563, -8.8127, -8.67692, 23.1985, 8.80819, 30.7138, -4.50194, -1.94907, 18.9176, 4.50194, 1.94907, -18.9176, 51.4219, 0.737189, 5.83273 ),
+"points": PoolVector3Array( -1.97234, -4.1565, 16.866, 1.97234, 4.1565, -16.866, 51.4219, 0.737189, 5.83273, 0, 0, 0, 0, 0, 0, 32.7431, 4.85568, -35.0235, 0, 0, 0, 0, 0, 0, 32.7431, 6.14334, -68.5026, 11.1582, 2.55133, -5.2292, -11.1582, -2.55133, 5.2292, 1.31745, 6.9526, -99.4948, 7.51534, 3.03033, -7.35196, -7.51534, -3.03033, 7.35196, 4.61755, 0.440872, -46.6862, -1.50629, 5.46336, -16.25, 1.50629, -5.46336, 16.25, -2.79984, 22.6153, 3.23339, -10.2563, 8.8127, 8.67692, 10.2563, -8.8127, -8.67692, 23.1985, 8.80819, 30.7138, -4.50194, -1.94907, 18.9176, 4.50194, 1.94907, -18.9176, 51.4219, 0.737189, 5.83273 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
@@ -534,6 +534,7 @@ shader_param/caustics = ExtResource( 27 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 14 )
+bpm = 60
 
 [node name="Metronome" type="Timer" parent="."]
 script = ExtResource( 29 )
@@ -553,11 +554,12 @@ directional_shadow_blend_splits = true
 [node name="Geocytes" type="Spatial" parent="."]
 transform = Transform( 0.0885231, 0, 0.260531, 0, 0.275159, 0, -0.260531, 0, 0.0885231, 37.4422, 84.6189, 25.1686 )
 
-[node name="Enemy" parent="Geocytes" instance=ExtResource( 30 )]
+[node name="Geocyte01" parent="Geocytes" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 190.601, 88.0599, -127.528 )
+lockLineDuration = 1
 
 [node name="MovableGeocyte" type="Path" parent="Geocytes"]
-transform = Transform( 1.1692, 0, -3.44105, 0, 3.63426, 0, 3.44105, 0, 1.1692, 79.2964, -278.453, -265.574 )
+transform = Transform( 1.1692, 0, -3.44105, 0, 3.63426, 0, 3.44105, 0, 1.1692, 79.2964, 29.2288, -265.574 )
 curve = SubResource( 57 )
 
 [node name="PathFollow" type="PathFollow" parent="Geocytes/MovableGeocyte"]
@@ -568,6 +570,8 @@ script = ExtResource( 24 )
 [node name="Enemy" parent="Geocytes/MovableGeocyte/PathFollow" instance=ExtResource( 21 )]
 transform = Transform( -0.87429, -0.121946, 0.469837, 0.19638, 0.796316, 0.572115, -0.443906, 0.592461, -0.672263, 0, 0, 0 )
 collision_mask = 2
+lockLineDuration = 2
+speed = 10
 
 [node name="lvl01_rock_01" parent="." instance=ExtResource( 25 )]
 

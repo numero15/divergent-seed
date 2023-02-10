@@ -4,9 +4,10 @@ onready var rays = get_node("GeocyteBullet/Rays")
 onready var ball = get_node("GeocyteBullet/Mesh")
 onready var audioPlayer = get_node("AudioStreamPlayer3D")
 
+var beatsToGoal = 2
 var soundPath
 var prev_unit_offset = 0.0
-export (float) var speed =.5
+#export (float) var speed =.5
 var emitterNodePath : NodePath
 var isValidated = false
 var tween
@@ -14,7 +15,7 @@ var tween
 func _ready():
 	tween= create_tween()
 #	needs to be changed to follow the BPM
-	tween.tween_property(self, "unit_offset",1.0,60/float(Settings.bpm)*2)
+	tween.tween_property(self, "unit_offset",1.0,60/float(Settings.bpm)*beatsToGoal)
 	tween.connect("finished", self, "tweenEnded")
 
 func tweenEnded():
