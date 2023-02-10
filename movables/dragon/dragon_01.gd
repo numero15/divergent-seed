@@ -54,19 +54,23 @@ func _physics_process(delta):
 	# Rotate the transform based on the input values
 	# clamp rotation
 	var new_rotation_x =  pitch_input * pitch_speed * delta
-#	if  rotation.x + new_rotation_x > -.7 and   rotation.x + new_rotation_x< .7:
-#		transform.basis = transform.basis.rotated(transform.basis.x, new_rotation_x)
+	
+# fixed up down, keep direction if no input
+	if !Settings.lerpPitch :
+		if  rotation.x + new_rotation_x > -.7 and   rotation.x + new_rotation_x< .7:
+			transform.basis = transform.basis.rotated(transform.basis.x, new_rotation_x)
 
-#	THIS IS WRONG, but it works
 
+#on press up down, return to horizontal when no input
 #smoothen rotation when near ground
-	if !rayCast.is_colliding():
-		rotation.x = lerp(rotation.x,pitch_input*0.7,2*delta)
-	else :
-		if pitch_input*0.7 > 0 :			
+	if Settings.lerpPitch :
+		if !rayCast.is_colliding():
 			rotation.x = lerp(rotation.x,pitch_input*0.7,2*delta)
 		else :
-			rotation.x = lerp(rotation.x,0,3*delta)
+			if pitch_input*0.7 > 0 :			
+				rotation.x = lerp(rotation.x,pitch_input*0.7,2*delta)
+			else :
+				rotation.x = lerp(rotation.x,0,3*delta)
 
 	#slowly return to horizontal
 #	if pitch_input == 0 :		

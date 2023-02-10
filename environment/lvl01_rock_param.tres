@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://environment/gradiant_rock.tres" type="Texture" id=1]
+[ext_resource path="res://shaders/StripesTriplanar.tres" type="Shader" id=2]
+[ext_resource path="res://environment/rock_dot.jpg" type="Texture" id=3]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = null
+shader_param/metallic = null
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_blend_sharpness = 1.0
+shader_param/uv1_scale = Vector3( 0.06, 0.06, 0.06 )
+shader_param/uv1_offset = null
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = null
+shader_param/gradient_scale = 0.009
+shader_param/gradient_offset = -45.0
+shader_param/texture_albedo = ExtResource( 3 )
+shader_param/gradient = ExtResource( 1 )

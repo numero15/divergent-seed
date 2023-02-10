@@ -535,6 +535,7 @@ shader_param/caustics = ExtResource( 27 )
 [node name="Level" type="Spatial"]
 script = ExtResource( 14 )
 bpm = 60
+lerpPitch = false
 
 [node name="Metronome" type="Timer" parent="."]
 script = ExtResource( 29 )
@@ -563,7 +564,7 @@ transform = Transform( 1.1692, 0, -3.44105, 0, 3.63426, 0, 3.44105, 0, 1.1692, 7
 curve = SubResource( 57 )
 
 [node name="PathFollow" type="PathFollow" parent="Geocytes/MovableGeocyte"]
-transform = Transform( -0.969235, -0.0614516, 0.238344, 0.0210223, 0.944126, 0.328911, -0.245238, 0.323802, -0.913788, -62.6279, 21.9496, -14.3655 )
+transform = Transform( -0.969235, -0.0614516, 0.238344, 0.0210223, 0.944126, 0.328911, -0.245238, 0.323802, -0.913788, 1.91787, 18.7316, 18.7237 )
 offset = 257.08
 script = ExtResource( 24 )
 
@@ -592,7 +593,7 @@ fromWidth = 0.1
 startColor = Color( 1, 1, 1, 0.0588235 )
 
 [node name="dragon_flattened" parent="DragonManager" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.148, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.148, -191.125 )
 min_flight_speed = 5
 turn_speed = 2.0
 pitch_speed = 2.0
@@ -690,7 +691,7 @@ material/0 = SubResource( 39 )
 script = ExtResource( 15 )
 
 [node name="Forest" type="KinematicBody" parent="."]
-transform = Transform( 0.7729, 0, -0.634528, 0, 1, 0, 0.634528, 0, 0.7729, -116.054, 79.2564, -206.755 )
+transform = Transform( 0.96589, 0, -0.258954, 0, 1, 0, 0.258954, 0, 0.96589, -126.727, 79.2564, -45.0538 )
 collision_layer = 2
 
 [node name="Sphere" parent="Forest" instance=ExtResource( 19 )]
@@ -742,6 +743,5 @@ material/0 = SubResource( 60 )
 [connection signal="enemies_locked" from="DragonManager/dragon_flattened/CameraPivot/CameraRef/Camera/Reticle" to="LockLines" method="add_lines"]
 [connection signal="setZoom" from="LockLines" to="DragonManager/dragon_flattened/CameraPivot/CameraRef" method="animate_length"]
 
-[editable path="lvl01"]
 [editable path="DragonManager/dragon_flattened"]
 [editable path="mountains"]
