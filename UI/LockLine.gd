@@ -68,8 +68,9 @@ func bullet_intercepted(_targetPath):
 	pass
 
 func bullet_missed(_targetPath):
-	dissolveAmout+=0.05
-	if dissolveAmout >= 1.0 :
-		queue_free()
-	trailPolygon.material.set_shader_param("dissolve_amount", dissolveAmout)
+#	dissolveAmout+=0.05
+#	if dissolveAmout >= 1.0 :
+#		queue_free()
+#	trailPolygon.material.set_shader_param("dissolve_amount", dissolveAmout)
+	pass	
 	

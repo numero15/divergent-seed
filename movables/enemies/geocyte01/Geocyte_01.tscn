@@ -10,6 +10,7 @@
 radius = 12.0
 
 [node name="Geocyte01" instance=ExtResource( 5 )]
+health = 3
 lockLineDuration = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
@@ -26,7 +27,7 @@ mesh = ExtResource( 2 )
 duration = 1.0
 
 [node name="Note" parent="Partition/Stave" index="1" instance=ExtResource( 3 )]
-duration = 0.25
+duration = 0.5
 
 [node name="StateMachine" parent="." index="2"]
 initial_state = NodePath("Idle")

@@ -13,7 +13,7 @@ var isValidated = false
 var tween
 
 func _ready():
-	tween= create_tween()
+	tween= create_tween().set_trans(Tween.TRANS_SINE)
 #	needs to be changed to follow the BPM
 	tween.tween_property(self, "unit_offset",1.0,60/float(Settings.bpm)*beatsToGoal)
 	tween.connect("finished", self, "tweenEnded")
