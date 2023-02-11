@@ -554,7 +554,7 @@ directional_shadow_blend_splits = true
 transform = Transform( 0.0885231, 0, 0.260531, 0, 0.275159, 0, -0.260531, 0, 0.0885231, 37.4422, 84.6189, 25.1686 )
 
 [node name="Geocyte01" parent="Geocytes" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 607.074, 88.0599, 206.669 )
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 678.211, 88.0599, 142.396 )
 
 [node name="Geocyte02" parent="Geocytes" instance=ExtResource( 30 )]
 transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 651.576, 88.0599, -231.183 )

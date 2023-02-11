@@ -38,7 +38,7 @@ func on_beat():
 		return
 		
 #if the current note is not finished then pass
-	if beat_count != get_node(currentStavePath).get_child(currentNoteIndex).duration :
+	if beat_count != get_node(currentStavePath).get_child(currentNoteIndex).duration*4 :
 		pass
 	elif currentNoteIndex == totalNotes-1 :
 		startNewStave()
