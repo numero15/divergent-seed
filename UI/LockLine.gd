@@ -29,13 +29,13 @@ func _process(delta):
 
 #listen to the metronome event
 func on_beat():
-	if !get_node_or_null(begin_node) or !get_node_or_null(end_node) :
-		pass
+	if get_node_or_null(begin_node)==null or get_node_or_null(end_node)==null :
+		return
 	
 #	start a new stave if none is active
 	if currentNoteIndex == -1:
 		startNewStave()
-		pass
+		return
 		
 #if the current note is not finished then pass
 	if beat_count != get_node(currentStavePath).get_child(currentNoteIndex).duration :
