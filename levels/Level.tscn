@@ -32,14 +32,16 @@
 [ext_resource path="res://movables/enemies/geocyte01/Geocyte_01.tscn" type="PackedScene" id=30]
 
 [sub_resource type="PanoramaSky" id=52]
+radiance_size = 0
 panorama = ExtResource( 10 )
 
 [sub_resource type="Environment" id=42]
 background_mode = 2
 background_sky = SubResource( 52 )
-ambient_light_color = Color( 0.401123, 0.456819, 0.828125, 1 )
+ambient_light_color = Color( 0.34902, 0.396078, 0.615686, 0.960784 )
 ambient_light_sky_contribution = 0.5
-fog_color = Color( 0.34902, 0.396078, 0.615686, 0.960784 )
+fog_enabled = true
+fog_color = Color( 0.317647, 0.298039, 0.54902, 0.780392 )
 fog_depth_begin = 50.0
 fog_depth_end = 300.0
 tonemap_mode = 2
