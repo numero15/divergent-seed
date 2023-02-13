@@ -65,10 +65,10 @@ func _physics_process(delta):
 #smoothen rotation when near ground
 	if Settings.lerpPitch :
 		if !rayCast.is_colliding():
-			rotation.x = lerp(rotation.x,pitch_input*0.7,2*delta)
+			rotation.x = lerp(rotation.x,pitch_input*0.7,1*delta)
 		else :
 			if pitch_input*0.7 > 0 :			
-				rotation.x = lerp(rotation.x,pitch_input*0.7,2*delta)
+				rotation.x = lerp(rotation.x,pitch_input*0.7,1*delta)
 			else :
 				rotation.x = lerp(rotation.x,0,3*delta)
 

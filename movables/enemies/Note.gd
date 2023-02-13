@@ -1,4 +1,4 @@
 extends Node
 
-export(int) var duration
+export(float) var duration
 export(Resource) var sound

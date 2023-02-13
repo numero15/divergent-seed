@@ -23,6 +23,8 @@ func add_lines(_ids:Array):
 			if get_node(line.begin_node).get_instance_id() == id :
 				toRemove=line
 		if !toRemove:
+			if instance_from_id(id) ==null :
+				continue
 			var lockLine_instance = LockLine.instance()
 			lockLine_instance.begin_node =  instance_from_id(id).get_path()
 			lockLine_instance.end_node = get_node("../DragonManager/dragon_flattened").get_path()

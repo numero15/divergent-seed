@@ -37,15 +37,16 @@
 [ext_resource path="res://movables/enemies/old/Enemy.gd" type="Script" id=35]
 
 [sub_resource type="PanoramaSky" id=52]
+radiance_size = 0
 panorama = ExtResource( 10 )
 
 [sub_resource type="Environment" id=42]
 background_mode = 2
 background_sky = SubResource( 52 )
-ambient_light_color = Color( 0.401123, 0.456819, 0.828125, 1 )
+ambient_light_color = Color( 0.34902, 0.396078, 0.615686, 0.960784 )
 ambient_light_sky_contribution = 0.5
 fog_enabled = true
-fog_color = Color( 0.34902, 0.396078, 0.615686, 0.960784 )
+fog_color = Color( 0.317647, 0.298039, 0.54902, 0.780392 )
 fog_depth_begin = 50.0
 fog_depth_end = 300.0
 tonemap_mode = 2
@@ -564,8 +565,49 @@ directional_shadow_blend_splits = true
 transform = Transform( 0.0885231, 0, 0.260531, 0, 0.275159, 0, -0.260531, 0, 0.0885231, 37.4422, 84.6189, 25.1686 )
 
 [node name="Geocyte01" parent="Geocytes" instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 190.601, 88.0599, -127.528 )
-lockLineDuration = 1
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 678.211, 88.0599, 142.396 )
+
+[node name="Geocyte02" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 651.576, 88.0599, -231.183 )
+
+[node name="Geocyte03" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 738.548, 22.1235, -349.829 )
+
+[node name="Geocyte07" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 805.22, 61.7463, -272.051 )
+
+[node name="Geocyte08" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 805.774, 201.829, -729.85 )
+health = 8
+
+[node name="Geocyte09" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 812.887, 173.547, -708.914 )
+health = 8
+
+[node name="Geocyte10" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 796.307, 149.672, -757.709 )
+health = 8
+
+[node name="Geocyte11" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 832.225, 230.479, -743.519 )
+health = 8
+
+[node name="Geocyte12" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 854.454, 181.656, -692.023 )
+health = 8
+
+[node name="Geocyte13" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 813.611, 181.656, -791.083 )
+health = 8
+
+[node name="Geocyte04" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 520.41, 22.1235, -1612.4 )
+
+[node name="Geocyte05" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 312.248, 78.5684, -1582.27 )
+
+[node name="Geocyte06" parent="Geocytes" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 104.098, 240.57, -1969.25 )
 
 [node name="Geocyte (test)" type="KinematicBody" parent="Geocytes" groups=["BulletListeners"]]
 transform = Transform( 1, 0, 1.49012e-07, 0, 1, 0, -1.49012e-07, 0, 1, 137.391, 88.0599, -284.13 )
@@ -627,7 +669,7 @@ fromWidth = 0.1
 startColor = Color( 1, 1, 1, 0.0588235 )
 
 [node name="dragon_flattened" parent="DragonManager" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 104.148, -191.125 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 142.803, 114.836, -58.728 )
 min_flight_speed = 5
 turn_speed = 2.0
 pitch_speed = 2.0
@@ -635,6 +677,9 @@ target_speed = 9
 
 [node name="AnimationPlayer" parent="DragonManager/dragon_flattened" index="1"]
 anims/fly = SubResource( 3 )
+
+[node name="Armature" parent="DragonManager/dragon_flattened" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="RayCastGround" parent="DragonManager/dragon_flattened" index="4"]
 cast_to = Vector3( 0, -6, 0 )
@@ -746,7 +791,7 @@ transform = Transform( 1200, 0, 0, 0, 1, 0, 0, 0, 1200, 0, 5.57977, 0 )
 shape = SubResource( 55 )
 
 [node name="Forest2" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -552.536, 16.1801, -397.144 )
+transform = Transform( 0.735544, 0.345588, 0.582705, -0.425242, 0.90508, 0, -0.527394, -0.247791, 0.812684, -286.905, 60.0556, -227.493 )
 collision_layer = 2
 
 [node name="Sphere" parent="Forest2" instance=ExtResource( 19 )]

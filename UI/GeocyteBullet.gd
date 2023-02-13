@@ -13,7 +13,7 @@ var isValidated = false
 var tween
 
 func _ready():
-	tween= create_tween()
+	tween= create_tween().set_trans(Tween.TRANS_SINE)
 #	needs to be changed to follow the BPM
 	tween.tween_property(self, "unit_offset",1.0,60/float(Settings.bpm)*beatsToGoal)
 	tween.connect("finished", self, "tweenEnded")
@@ -29,7 +29,7 @@ func _process(delta):
 #	set_unit_offset(prev_unit_offset + speed*delta)
 #	prev_unit_offset = get_unit_offset()
 		
-	if get_unit_offset()>0.85:
+	if get_unit_offset()>0.9:
 		ray_visible(true)
 	if get_unit_offset()<0.1 :
 		ray_visible(false)
@@ -39,7 +39,7 @@ func _process(delta):
 #			get_tree().call_group("BulletListeners","bullet_missed", emitterNodePath)
 #		queue_free()
 		
-	if Input.is_action_just_pressed("intercept") and get_unit_offset()>0.85:
+	if Input.is_action_just_pressed("intercept") and get_unit_offset()>0.9:
 		isValidated = true
 		get_tree().call_group("BulletListeners","bullet_intercepted", emitterNodePath)
 		audioPlayer.stream = soundPath
@@ -53,10 +53,10 @@ func ray_visible(_v:bool):
 	rays.visible = _v
 	if _v :
 		var tween :=create_tween().set_trans(Tween.TRANS_QUAD)
-		tween.tween_property(ball,"scale",Vector3(2,2,2),.1)
+#		tween.tween_property(ball,"scale",Vector3(2.5,2.5,2.5),.15)
 		for _ray in rays.get_children():
 			_ray.scale.z=.5
 			tween =create_tween().set_trans(Tween.TRANS_QUAD)
-			tween.tween_property(_ray,"scale",Vector3(1,1,3),.1)
+			tween.tween_property(_ray,"scale",Vector3(1,1,4),.1)
 	else :	
 		ball.scale = Vector3(1,1,1)
