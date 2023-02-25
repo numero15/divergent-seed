@@ -1,11 +1,11 @@
 #https://www.youtube.com/watch?v=iu4ojdSRdnA
 
-extends SpringArm
-export (float) var near_length = 10.0
-export (float) var far_length = 30.0
-#export(float, 0.1, 0.5, 0.01) var camera_drag_margin = 0
-#export(float, .0, 5.0, 0.1) var camera_rotation_speed_x= 2.5
-#export(float, 0.0, 5.0, 0.1) var camera_rotation_speed_y= 2
+extends SpringArm3D
+@export  var near_length: float = 10.0
+@export  var far_length:float = 30.0
+#export var camera_drag_margin = 0 # (float, 0.1, 0.5, 0.01)
+#export var camera_rotation_speed_x= 2.5 # (float, .0, 5.0, 0.1)
+#export var camera_rotation_speed_y= 2 # (float, 0.0, 5.0, 0.1)
 #
 #var center_screen
 #var margin_size
@@ -28,7 +28,7 @@ var mouse_sensitivity = 0.15
 var stick_sensitivity = 1.0
 #var camera_anglev=0
 var input_strength
-onready var pivot = get_parent()
+@onready var pivot = get_parent()
 
 func _ready():
 	spring_length = far_length
@@ -43,7 +43,7 @@ func _input(event):
 #		var changev=-event.relative.y*mouse_sens
 #		if camera_anglev+changev>-50 and camera_anglev+changev<50:
 #			camera_anglev+=changev
-#			rotate_x(deg2rad(changev))
+#			rotate_x(deg_to_rad(changev))
 	else :
 		pass
 

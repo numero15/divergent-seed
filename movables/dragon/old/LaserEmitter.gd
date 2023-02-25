@@ -1,14 +1,14 @@
-extends Spatial
+extends Node3D
 
-export (PackedScene) var Laser
-export(NodePath) onready var parent = get_node(parent)
+@export (PackedScene) var Laser
+@export(NodePath) onready var parent = get_node(parent)
 
 func spawn(targets:Array):
 	var laser_instance
 	var target
 	
 	for id in targets:
-		laser_instance= Laser.instance()
+		laser_instance= Laser.instantiate()
 		target = instance_from_id(id)
 		get_tree().get_root().get_node("Level").add_child(laser_instance)
 		laser_instance.target_id = id

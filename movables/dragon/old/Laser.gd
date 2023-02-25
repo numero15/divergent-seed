@@ -1,9 +1,9 @@
-extends Area
+extends Area3D
 
 var direction = Vector3.ZERO
 var velocity = 30
 var target_id =-1
-export var damage = 1
+@export var damage = 1
 
 func _physics_process(delta):
 	  transform.origin += direction * velocity * delta

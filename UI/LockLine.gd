@@ -1,12 +1,12 @@
 #https://www.youtube.com/watch?v=-qpxjZjzLI0
 
-extends Spatial
+extends Node3D
 
-export (NodePath) var begin_node
-export (NodePath) var end_node
-export (Array, int) var partition
-onready var path = get_node("Path")
-onready var trailPolygon = get_node("CSGPolygon")
+@export var begin_node:NodePath
+@export var end_node:NodePath
+@export  var partition : Array[int]
+@onready var path = get_node("Path3D")
+@onready var trailPolygon = get_node("CSGPolygon3D")
 var bulletNode = preload("res://UI/GeocyteBullet.tscn")
 var dissolveAmout = 0.5
 #used to know when to add a bullet
@@ -14,10 +14,8 @@ var beat_count = 0
 var totalNotes = 0
 var currentNoteIndex = -1
 var currentStavePath
-#func _ready():
-#	print (get_node(begin_node).get_node("Partition"))
 
-func _process(delta):
+func _process(_delta):
 	
 	if !get_node_or_null(begin_node) or !get_node_or_null(end_node)  :		
 		queue_free()
@@ -56,7 +54,7 @@ func startNewStave():
 	
 func add_bullet():
 	currentNoteIndex+=1
-	var newBullet = bulletNode.instance()
+	var newBullet = bulletNode.instantiate()
 	newBullet.emitterNodePath = begin_node
 	newBullet.soundPath = get_node(currentStavePath).get_child(currentNoteIndex).sound
 	newBullet.beatsToGoal = get_node(begin_node).lockLineDuration
@@ -71,6 +69,6 @@ func bullet_missed(_targetPath):
 #	dissolveAmout+=0.05
 #	if dissolveAmout >= 1.0 :
 #		queue_free()
-#	trailPolygon.material.set_shader_param("dissolve_amount", dissolveAmout)
+#	trailPolygon.material.set_shader_parameter("dissolve_amount", dissolveAmout)
 	pass	
 	

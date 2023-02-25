@@ -1,6 +1,6 @@
-extends Spatial
-export (int) var bpm = 120
-export (bool) var lerpPitch = true
+extends Node3D
+@export var bpm:int = 120
+@export  var lerpPitch:bool = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

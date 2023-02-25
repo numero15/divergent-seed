@@ -1,8 +1,8 @@
-extends PathFollow
+extends PathFollow3D
 
-onready var rays = get_node("GeocyteBullet/Rays")
-onready var ball = get_node("GeocyteBullet/Mesh")
-onready var audioPlayer = get_node("AudioStreamPlayer3D")
+@onready var rays = get_node("GeocyteBullet/Rays")
+@onready var ball = get_node("GeocyteBullet/Mesh")
+@onready var audioPlayer = get_node("AudioStreamPlayer3D")
 
 var beatsToGoal = 2
 var soundPath
@@ -14,9 +14,8 @@ var tween
 
 func _ready():
 	tween= create_tween().set_trans(Tween.TRANS_SINE)
-#	needs to be changed to follow the BPM
-	tween.tween_property(self, "unit_offset",1.0,60/float(Settings.bpm)*beatsToGoal)
-	tween.connect("finished", self, "tweenEnded")
+	tween.tween_property(self, "progress_ratio",1.0,60/float(Settings.bpm)*beatsToGoal)
+	tween.connect("finished",Callable(self,"tweenEnded"))
 
 func tweenEnded():
 	if !isValidated :
@@ -24,22 +23,22 @@ func tweenEnded():
 	queue_free()
 
 
-func _process(delta):
+func _process(_delta):
 	
-#	set_unit_offset(prev_unit_offset + speed*delta)
-#	prev_unit_offset = get_unit_offset()
+#	set_progress_ratio(prev_unit_offset + speed*delta)
+#	prev_unit_offset = get_progress_ratio()
 		
-	if get_unit_offset()>0.9:
+	if get_progress_ratio()>0.9:
 		ray_visible(true)
-	if get_unit_offset()<0.1 :
+	if get_progress_ratio()<0.1 :
 		ray_visible(false)
 		
-#	if get_unit_offset() >= 1 :
+#	if get_progress_ratio() >= 1 :
 #		if !isValidated :
 #			get_tree().call_group("BulletListeners","bullet_missed", emitterNodePath)
 #		queue_free()
 		
-	if Input.is_action_just_pressed("intercept") and get_unit_offset()>0.9:
+	if Input.is_action_just_pressed("intercept") and get_progress_ratio()>0.95:
 		isValidated = true
 		get_tree().call_group("BulletListeners","bullet_intercepted", emitterNodePath)
 		audioPlayer.stream = soundPath
@@ -51,12 +50,13 @@ func on_beat():
 
 func ray_visible(_v:bool):
 	rays.visible = _v
+	var ray_tween
 	if _v :
-		var tween :=create_tween().set_trans(Tween.TRANS_QUAD)
+#		tween =create_tween().set_trans(Tween.TRANS_QUAD)
 #		tween.tween_property(ball,"scale",Vector3(2.5,2.5,2.5),.15)
 		for _ray in rays.get_children():
 			_ray.scale.z=.5
-			tween =create_tween().set_trans(Tween.TRANS_QUAD)
-			tween.tween_property(_ray,"scale",Vector3(1,1,4),.1)
+			ray_tween =create_tween().set_trans(Tween.TRANS_QUAD).bind_node(_ray)
+			ray_tween.tween_property(_ray,"scale",Vector3(1,1,4),.1)
 	else :	
 		ball.scale = Vector3(1,1,1)

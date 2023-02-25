@@ -1,188 +1,185 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://cxtukyy56sgn4"]
 
-[ext_resource path="res://shaders/circleFX_shader.tres" type="Shader" id=1]
-[ext_resource path="res://FX/CircleFX.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://FX/CircleFX.gd" id="2"]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 resource_name = "CircleFXAnimation"
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Circle001:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 2 ),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 2),
 "update": 0,
-"values": [ Vector3( 0.2, 0.2, 0.2 ), Vector3( 2.5, 2.5, 2.5 ) ]
+"values": [Vector3(0.2, 0.2, 0.2), Vector3(2.5, 2.5, 2.5)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Circle001:material/0:shader_param/color_end")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.15, 0.25 ),
-"transitions": PoolRealArray( 1, 2, 1 ),
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
-"values": [ Color( 0, 0.368627, 1, 0.45098 ), Color( 0.0666667, 0.988235, 0.854902, 0.435294 ), Color( 0, 0.368627, 1, 0 ) ]
+"values": [Color(0, 0.368627, 1, 0.45098), Color(0.0666667, 0.988235, 0.854902, 0.435294), Color(0, 0.368627, 1, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Circle001:material/0:shader_param/offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 0.5 ),
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 0.5),
 "update": 0,
-"values": [ 0.0, 0.0, 6.0 ]
+"values": [0.0, 0.0, 6.0]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Circle002:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector3( 0.5, 0.5, 0.5 ), Vector3( 3.5, 3.5, 3.5 ) ]
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(3.5, 3.5, 3.5)]
 }
 
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.479381, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.227451 )
+[sub_resource type="Gradient" id="2"]
+offsets = PackedFloat32Array(0.479381, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.227451)
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture2D" id="3"]
+gradient = SubResource("2")
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Circle001:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 2, 2, 2 ) ]
+"values": [Vector3(2, 2, 2)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Circle001:material/0:albedo_texture:gradient")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ SubResource( 2 ) ]
+"values": [SubResource("2")]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Circle001:material/0:albedo_texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ SubResource( 3 ) ]
+"values": [SubResource("3")]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Circle001:material/0:albedo_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("Circle001:material/0:shader_param/color_end")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ) ]
+"values": [Color(1, 0, 0, 1)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("Circle001:material/0:shader_param/offset")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.8 ]
+"values": [0.8]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("Circle002:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 1.175, 1.175, 1.175 ) ]
+"values": [Vector3(1.175, 1.175, 1.175)]
 }
 
-[sub_resource type="ArrayMesh" id=1]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w71al"]
+_data = {
+"CircleFXAnimation": SubResource("5"),
+"RESET": SubResource("7")
+}
+
+[sub_resource type="ArrayMesh" id="1"]
 resource_name = "circle_Circle001"
-surfaces/0 = {
-"aabb": AABB( -1.60809, 0, -1.60809, 3.21617, 1e-05, 3.21617 ),
-"array_data": PoolByteArray( 0, 0, 144, 178, 0, 0, 0, 0, 0, 0, 128, 49, 0, 127, 37, 63, 0, 0, 0, 60, 0, 0, 144, 178, 0, 0, 0, 0, 0, 0, 128, 49, 0, 127, 167, 63, 0, 0, 0, 60, 228, 32, 47, 50, 0, 0, 0, 0, 187, 213, 205, 191, 0, 127, 127, 108, 0, 60, 0, 0, 228, 32, 47, 50, 0, 0, 0, 0, 187, 213, 205, 191, 0, 127, 127, 127, 0, 60, 0, 60, 9, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 191, 0, 127, 127, 127, 0, 60, 0, 0, 9, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 191, 0, 127, 129, 108, 0, 60, 0, 60, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 191, 0, 127, 129, 108, 0, 60, 0, 0, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 191, 0, 127, 129, 95, 0, 60, 0, 60, 168, 42, 190, 191, 0, 0, 0, 0, 9, 138, 29, 191, 0, 127, 129, 95, 0, 60, 0, 0, 168, 42, 190, 191, 0, 0, 0, 0, 9, 138, 29, 191, 0, 127, 129, 82, 0, 60, 0, 60, 187, 213, 205, 191, 0, 0, 0, 0, 224, 21, 146, 51, 0, 127, 129, 82, 0, 60, 0, 0, 187, 213, 205, 191, 0, 0, 0, 0, 224, 21, 146, 51, 0, 127, 129, 63, 0, 60, 0, 60, 169, 42, 190, 191, 0, 0, 0, 0, 8, 138, 29, 63, 0, 127, 129, 63, 0, 60, 0, 0, 169, 42, 190, 191, 0, 0, 0, 0, 8, 138, 29, 63, 0, 127, 167, 63, 0, 60, 0, 60, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 63, 0, 127, 167, 63, 0, 60, 0, 0, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 63, 0, 127, 193, 63, 0, 60, 0, 60, 10, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 63, 0, 127, 193, 63, 0, 60, 0, 0, 10, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 63, 0, 127, 219, 63, 0, 60, 0, 60, 74, 229, 33, 52, 0, 0, 0, 0, 187, 213, 205, 63, 0, 127, 219, 63, 0, 60, 0, 0, 74, 229, 33, 52, 0, 0, 0, 0, 187, 213, 205, 63, 0, 127, 0, 63, 0, 60, 0, 60, 10, 138, 29, 63, 0, 0, 0, 0, 168, 42, 190, 63, 0, 127, 37, 63, 0, 60, 0, 60, 10, 138, 29, 63, 0, 0, 0, 0, 168, 42, 190, 63, 0, 127, 0, 63, 0, 60, 0, 0, 23, 140, 145, 63, 0, 0, 0, 0, 25, 140, 145, 63, 0, 127, 37, 63, 0, 60, 0, 0, 23, 140, 145, 63, 0, 0, 0, 0, 25, 140, 145, 63, 0, 127, 63, 63, 0, 60, 0, 60, 168, 42, 190, 63, 0, 0, 0, 0, 13, 138, 29, 63, 0, 127, 63, 63, 0, 60, 0, 0, 168, 42, 190, 63, 0, 0, 0, 0, 13, 138, 29, 63, 0, 127, 89, 63, 0, 60, 0, 60, 187, 213, 205, 63, 0, 0, 0, 0, 100, 46, 184, 178, 0, 127, 89, 63, 0, 60, 0, 0, 187, 213, 205, 63, 0, 0, 0, 0, 100, 46, 184, 178, 0, 127, 127, 63, 0, 60, 0, 60, 168, 42, 190, 63, 0, 0, 0, 0, 14, 138, 29, 191, 0, 127, 127, 63, 0, 60, 0, 0, 168, 42, 190, 63, 0, 0, 0, 0, 14, 138, 29, 191, 0, 127, 127, 82, 0, 60, 0, 60, 26, 140, 145, 63, 0, 0, 0, 0, 23, 140, 145, 191, 0, 127, 127, 82, 0, 60, 0, 0, 26, 140, 145, 63, 0, 0, 0, 0, 23, 140, 145, 191, 0, 127, 127, 95, 0, 60, 0, 60, 10, 138, 29, 63, 0, 0, 0, 0, 169, 42, 190, 191, 0, 127, 127, 95, 0, 60, 0, 0, 10, 138, 29, 63, 0, 0, 0, 0, 169, 42, 190, 191, 0, 127, 127, 108, 0, 60, 0, 60 ),
-"array_index_data": PoolByteArray( 1, 0, 30, 0, 29, 0, 1, 0, 16, 0, 15, 0, 1, 0, 32, 0, 31, 0, 1, 0, 18, 0, 17, 0, 1, 0, 4, 0, 3, 0, 1, 0, 2, 0, 33, 0, 1, 0, 21, 0, 19, 0, 1, 0, 6, 0, 5, 0, 0, 0, 22, 0, 20, 0, 1, 0, 8, 0, 7, 0, 1, 0, 24, 0, 23, 0, 1, 0, 10, 0, 9, 0, 1, 0, 26, 0, 25, 0, 1, 0, 12, 0, 11, 0, 1, 0, 28, 0, 27, 0, 1, 0, 14, 0, 13, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
+_surfaces = [{
+"aabb": AABB(-1.60809, 0, -1.60809, 3.21617, 1e-05, 3.21617),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63),
+"format": 4119,
 "index_count": 48,
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 34
-}
+"index_data": PackedByteArray(1, 0, 30, 0, 29, 0, 1, 0, 16, 0, 15, 0, 1, 0, 32, 0, 31, 0, 1, 0, 18, 0, 17, 0, 1, 0, 4, 0, 3, 0, 1, 0, 2, 0, 33, 0, 1, 0, 21, 0, 19, 0, 1, 0, 6, 0, 5, 0, 0, 0, 22, 0, 20, 0, 1, 0, 8, 0, 7, 0, 1, 0, 24, 0, 23, 0, 1, 0, 10, 0, 9, 0, 1, 0, 26, 0, 25, 0, 1, 0, 12, 0, 11, 0, 1, 0, 28, 0, 27, 0, 1, 0, 14, 0, 13, 0),
+"primitive": 3,
+"vertex_count": 34,
+"vertex_data": PackedByteArray(0, 0, 144, 178, 0, 0, 0, 0, 0, 0, 128, 49, 0, 0, 255, 127, 73, 165, 126, 191, 0, 0, 144, 178, 0, 0, 0, 0, 0, 0, 128, 49, 0, 0, 255, 127, 76, 38, 126, 191, 228, 32, 47, 50, 0, 0, 0, 0, 187, 213, 205, 191, 0, 0, 255, 127, 255, 255, 216, 236, 228, 32, 47, 50, 0, 0, 0, 0, 187, 213, 205, 191, 0, 0, 255, 127, 255, 255, 255, 255, 9, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 191, 0, 0, 255, 127, 255, 255, 255, 255, 9, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 191, 0, 0, 255, 127, 0, 0, 216, 236, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 191, 0, 0, 255, 127, 0, 0, 216, 236, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 191, 0, 0, 255, 127, 0, 0, 190, 223, 168, 42, 190, 191, 0, 0, 0, 0, 9, 138, 29, 191, 0, 0, 255, 127, 0, 0, 190, 223, 168, 42, 190, 191, 0, 0, 0, 0, 9, 138, 29, 191, 0, 0, 255, 127, 0, 0, 164, 210, 187, 213, 205, 191, 0, 0, 0, 0, 224, 21, 146, 51, 0, 0, 255, 127, 0, 0, 164, 210, 187, 213, 205, 191, 0, 0, 0, 0, 224, 21, 146, 51, 0, 0, 255, 127, 0, 0, 126, 191, 169, 42, 190, 191, 0, 0, 0, 0, 8, 138, 29, 63, 0, 0, 255, 127, 0, 0, 126, 191, 169, 42, 190, 191, 0, 0, 0, 0, 8, 138, 29, 63, 0, 0, 255, 127, 76, 38, 126, 191, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 63, 0, 0, 255, 127, 76, 38, 126, 191, 24, 140, 145, 191, 0, 0, 0, 0, 24, 140, 145, 63, 0, 0, 255, 127, 128, 64, 126, 191, 10, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 63, 0, 0, 255, 127, 128, 64, 126, 191, 10, 138, 29, 191, 0, 0, 0, 0, 168, 42, 190, 63, 0, 0, 255, 127, 181, 90, 126, 191, 74, 229, 33, 52, 0, 0, 0, 0, 187, 213, 205, 63, 0, 0, 255, 127, 181, 90, 126, 191, 74, 229, 33, 52, 0, 0, 0, 0, 187, 213, 205, 63, 0, 0, 255, 127, 255, 127, 126, 191, 10, 138, 29, 63, 0, 0, 0, 0, 168, 42, 190, 63, 0, 0, 255, 127, 73, 165, 126, 191, 10, 138, 29, 63, 0, 0, 0, 0, 168, 42, 190, 63, 0, 0, 255, 127, 255, 127, 126, 191, 23, 140, 145, 63, 0, 0, 0, 0, 25, 140, 145, 63, 0, 0, 255, 127, 73, 165, 126, 191, 23, 140, 145, 63, 0, 0, 0, 0, 25, 140, 145, 63, 0, 0, 255, 127, 126, 191, 126, 191, 168, 42, 190, 63, 0, 0, 0, 0, 13, 138, 29, 63, 0, 0, 255, 127, 126, 191, 126, 191, 168, 42, 190, 63, 0, 0, 0, 0, 13, 138, 29, 63, 0, 0, 255, 127, 178, 217, 126, 191, 187, 213, 205, 63, 0, 0, 0, 0, 100, 46, 184, 178, 0, 0, 255, 127, 178, 217, 126, 191, 187, 213, 205, 63, 0, 0, 0, 0, 100, 46, 184, 178, 0, 0, 255, 127, 255, 255, 126, 191, 168, 42, 190, 63, 0, 0, 0, 0, 14, 138, 29, 191, 0, 0, 255, 127, 255, 255, 126, 191, 168, 42, 190, 63, 0, 0, 0, 0, 14, 138, 29, 191, 0, 0, 255, 127, 255, 255, 164, 210, 26, 140, 145, 63, 0, 0, 0, 0, 23, 140, 145, 191, 0, 0, 255, 127, 255, 255, 164, 210, 26, 140, 145, 63, 0, 0, 0, 0, 23, 140, 145, 191, 0, 0, 255, 127, 255, 255, 190, 223, 10, 138, 29, 63, 0, 0, 0, 0, 169, 42, 190, 191, 0, 0, 255, 127, 255, 255, 190, 223, 10, 138, 29, 63, 0, 0, 0, 0, 169, 42, 190, 191, 0, 0, 255, 127, 255, 255, 216, 236)
+}]
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 1 )
-shader_param/offset = 0.8
-shader_param/color_start = Color( 0.145098, 0.156863, 0.894118, 0 )
-shader_param/color_end = Color( 1, 0, 0, 1 )
-
-[node name="CircleFX" type="Spatial"]
-script = ExtResource( 2 )
+[node name="CircleFX" type="Node3D"]
+script = ExtResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/CircleFXAnimation = SubResource( 5 )
-anims/RESET = SubResource( 7 )
+libraries = {
+"": SubResource("AnimationLibrary_w71al")
+}
 
-[node name="Circle001" type="MeshInstance" parent="."]
-transform = Transform( 1.73205, 1, 0, -1, 1.73205, 0, 0, 0, 2, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 8 )
+[node name="Circle001" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.73205, 1, 0, -1, 1.73205, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("1")
 
-[node name="Circle002" type="MeshInstance" parent="."]
-transform = Transform( -0.662364, 0.970515, 0, -0.970515, -0.662364, 0, 0, 0, 1.175, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 8 )
+[node name="Circle002" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.662364, 0.970515, 0, -0.970515, -0.662364, 0, 0, 0, 1.175, 0, 0, 0)
+mesh = SubResource("1")

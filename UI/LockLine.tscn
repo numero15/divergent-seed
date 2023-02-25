@@ -1,59 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://bhxt5arbxfjwo"]
 
-[ext_resource path="res://UI/LockLine.gd" type="Script" id=1]
-[ext_resource path="res://shaders/LockLineShader.tres" type="Material" id=3]
+[ext_resource type="Script" path="res://UI/LockLine.gd" id="1"]
 
-[sub_resource type="Animation" id=6]
-resource_name = "LockLineFadeIn"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("CSGPolygon:material:shader_param/dissolve_amount")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=7]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("CSGPolygon:material:shader_param/dissolve_amount")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-
-[sub_resource type="Curve3D" id=1]
+[sub_resource type="Curve3D" id="Curve3D_6v20h"]
 _data = {
-"points": PoolVector3Array( -0.058733, -0.0778434, -0.029438, 0.058733, 0.0778434, 0.029438, -4.66702, -2.97095, -2.78381, 1.11309, 0.420602, -1.80214, -1.11309, -0.420602, 1.80214, -2.8123, 11.0031, -8.08015 ),
-"tilts": PoolRealArray( 0, 0 )
+"points": PackedVector3Array(-0.058733, -0.0778434, -0.029438, 0.058733, 0.0778434, 0.029438, -4.66702, -2.97095, -2.78381, 1.11309, 0.420602, -1.80214, -1.11309, -0.420602, 1.80214, -2.8123, 11.0031, -8.08015),
+"tilts": PackedFloat32Array(0, 0)
 }
+point_count = 2
 
-[node name="LockLine" type="Spatial" groups=["BeatListeners", "BulletListeners"]]
-script = ExtResource( 1 )
-partition = [ 1, 1, 2, 3 ]
+[node name="LockLine" type="Node3D" groups=["BeatListeners", "BulletListeners"]]
+script = ExtResource("1")
+partition = Array[int]([1, 1, 2, 3])
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "LockLineFadeIn"
-anims/LockLineFadeIn = SubResource( 6 )
-anims/RESET = SubResource( 7 )
-
-[node name="CSGPolygon" type="CSGPolygon" parent="."]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 cast_shadow = 0
-polygon = PoolVector2Array( 0.02, 0.02, 0.02, -0.02, -0.02, -0.02, -0.02, 0.02 )
+polygon = PackedVector2Array(0.02, 0.02, 0.02, -0.02, -0.02, -0.02, -0.02, 0.02)
 mode = 2
-path_node = NodePath("../Path")
+path_node = NodePath("../Path3D")
 path_interval_type = 1
 path_interval = 0.1
 path_simplify_angle = 0.0
@@ -62,7 +26,6 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 7.1
 path_joined = false
-material = ExtResource( 3 )
 
-[node name="Path" type="Path" parent="."]
-curve = SubResource( 1 )
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_6v20h")

@@ -1,5 +1,5 @@
 extends ColorRect
-onready var animationPlayer = get_node("AnimationPlayer")
+@onready var animationPlayer = get_node("AnimationPlayer")
 
 
 func bullet_intercepted(_targetPath):

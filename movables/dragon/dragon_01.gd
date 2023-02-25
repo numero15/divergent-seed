@@ -1,17 +1,17 @@
-extends KinematicBody
+extends CharacterBody3D
 
 
 #source http://kidscancode.org/godot_recipes/3d/simple_airplane/
 
 
 # Can't fly below this speed
-export var min_flight_speed = 0
+@export var min_flight_speed = 0
 # Maximum airspeed
-export var max_flight_speed = 30
+@export var max_flight_speed = 30
 # Turn rate
-export var turn_speed = 0.75
+@export var turn_speed = 0.75
 # Climb/dive rate
-export var pitch_speed = 0.5
+@export var pitch_speed = 0.5
 # Wings "autolevel" speed
 var level_speed = 3.0
 # Throttle change speed
@@ -24,22 +24,22 @@ var acceleration = 6.0
 # Current speed
 var forward_speed = 0
 # Throttle input speed
-export var target_speed = 0
+@export var target_speed = 0
 # Lets us disable certain things when grounded
 var grounded = false
 
-var velocity = Vector3.ZERO
+var speed = Vector3.ZERO
 var turn_input = 0
 var pitch_input = 0
 
 
-onready var mesh = $Armature/Skeleton
-onready var particles = $Particles
-onready var rayCast = $RayCastGround
-onready var circleFX = $CircleFX
-onready var animationPlayer = $AnimationPlayer
+@onready var mesh = $Armature/Skeleton3D
+@onready var particles = $GPUParticles3D
+@onready var rayCast = $RayCastGround
+@onready var circleFX = $CircleFX
+@onready var animationPlayer = $AnimationPlayer
 
-func _process(delta):
+func _process(_delta):
 	
 
 #	trail.updatePos(mesh.global_transform*mesh.get_bone_global_pose(mesh.find_bone("Digit.003.L.004")))
@@ -51,7 +51,7 @@ func _process(delta):
 		
 func _physics_process(delta):
 	get_input(delta)
-	# Rotate the transform based on the input values
+	# Rotate the transform based checked the input values
 	# clamp rotation
 	var new_rotation_x =  pitch_input * pitch_speed * delta
 	
@@ -61,7 +61,7 @@ func _physics_process(delta):
 			transform.basis = transform.basis.rotated(transform.basis.x, new_rotation_x)
 
 
-#on press up down, return to horizontal when no input
+#checked press up down, return to horizontal when no input
 #smoothen rotation when near ground
 	if Settings.lerpPitch :
 		if !rayCast.is_colliding():
@@ -74,33 +74,37 @@ func _physics_process(delta):
 
 	#slowly return to horizontal
 #	if pitch_input == 0 :		
-#		var current_rot = Quat(transform.basis)
-#		var target_rot = Quat(Vector3(0,0,1), 0)
+#		var current_rot = Quaternion(transform.basis)
+#		var target_rot = Quaternion(Vector3(0,0,1), 0)
 #		var smoothrot = current_rot.slerp(target_rot, 0.01)
 #		transform.basis = Basis(smoothrot)
 
 	transform.basis = transform.basis.rotated(Vector3.UP, turn_input * turn_speed * delta)
-	# If on the ground, don't roll the body
+	# If checked the ground, don't roll the body
 	if grounded:
 		mesh.rotation.z = 0
 	else:
-		# Roll the body based on the turn input
-		mesh.rotation.z = lerp(mesh.rotation.z, turn_input, level_speed * delta)
+		# Roll the body based checked the turn input
+		mesh.rotation.z = lerpf(mesh.rotation.z, turn_input, level_speed * delta)
 
 	# Accelerate/decelerate
-	forward_speed = lerp(forward_speed, target_speed, acceleration * delta)
+	forward_speed = lerpf(forward_speed, target_speed, acceleration * delta)
 	# Movement is always forward
-	velocity = -transform.basis.z * forward_speed
-	# Handle landing/taking off
+	speed = -transform.basis.z * forward_speed
+	# Handle landing/taking unchecked
 	if is_on_floor():
 		if not grounded:
 			rotation.x = 0
-		velocity.y -= 1
+		speed.y -= 1
 		grounded = true
 	else:
 		grounded = false
 
-	velocity = move_and_slide(velocity, Vector3.UP,true)
+	set_velocity(speed)
+	set_up_direction(Vector3.UP)
+	set_floor_stop_on_slope_enabled(true)
+	move_and_slide()
+	speed = speed
 	
 #for mouse wheel input
 func _input(event):
@@ -114,12 +118,12 @@ func get_input(delta):
 	# Throttle input
 	if is_throttle_up or Input.is_action_pressed("throttle_up"):
 		target_speed = min(forward_speed + throttle_delta * delta, max_flight_speed)
-		animationPlayer.playback_speed = target_speed/20+.2
+#		animationPlayer.playback_speed = target_speed/20+.2
 		
 	if is_throttle_down or Input.is_action_pressed("throttle_down"):
 		var limit = 0 if grounded else min_flight_speed
 		target_speed = max(forward_speed - throttle_delta * delta, limit)
-		animationPlayer.playback_speed = target_speed/20+.2
+#		animationPlayer.playback_speed = target_speed/20+.2
 		
 	is_throttle_down = false
 	is_throttle_up = false

@@ -1,12 +1,13 @@
 #source https://godotengine.org/qa/81210/3d-make-object-follow-mouse
 
-extends Spatial
-export(NodePath) onready var camera = get_node(camera)
-onready var mesh = $MeshInstance
+extends Node3D
+#@export(NodePath) onready var camera = get_node(camera)
+@onready var camera = get_node("..")
+@onready var mesh = $MeshInstance3D
 
-onready var texture_unlock = preload("res://UI/crosshair_unlock.png")
-onready var texture_lock = preload("res://UI/crosshair_lock.png")
-onready var dragon_mesh = get_node("../../../..")
+@onready var texture_unlock = preload("res://UI/crosshair_unlock.png")
+@onready var texture_lock = preload("res://UI/crosshair_lock.png")
+@onready var dragon_mesh = get_node("../../../..")
 var is_pressed = false
 var locked_list = []
 signal enemies_locked
@@ -23,17 +24,17 @@ func _input(event):
 	if event.is_action_pressed("lock"):
 		is_pressed = true
 		locked_list.clear()
-		mesh.get_surface_material(0).albedo_texture = texture_unlock
+		mesh.get_surface_override_material(0).albedo_texture = texture_unlock
 		
 	if event.is_action_released("lock"):
 		is_pressed = false
-		mesh.get_surface_material(0).albedo_texture = texture_lock
+		mesh.get_surface_override_material(0).albedo_texture = texture_lock
 		if locked_list.size()>0:
 			emit_signal("enemies_locked",locked_list)
 
 	var from
 	var to
-	var space_state = get_world().direct_space_state
+	var space_state = get_world_3d().direct_space_state
 	var intersection = null
 	
 	if Settings.input_mode == Settings.InputMode.Keyboard and event is InputEventMouseMotion:
@@ -43,18 +44,27 @@ func _input(event):
 		if is_pressed :
 			from = camera.project_ray_origin(mouse_pos)
 			to = from + camera.project_ray_normal(mouse_pos) * 500
-			intersection= space_state.intersect_ray(from,to,[dragon_mesh])
+			var ray_query = PhysicsRayQueryParameters3D.new()
+			ray_query.from = from
+			ray_query.to = to
+			ray_query.exclude = [dragon_mesh]
+			ray_query.collide_with_areas = true
+			intersection= space_state.intersect_ray(ray_query)
 
 	if  Settings.input_mode == Settings.InputMode.Pad and  (event.is_action_pressed("crosshair_right") or event.is_action_pressed("crosshair_left")or event.is_action_pressed("crosshair_up") or event.is_action_pressed("crosshair_down")):
 		#raycasting enemies hitboxes if mouse is pressed
 		if is_pressed :
 			from = camera.project_ray_origin(camera.unproject_position(global_transform.origin))
 			to = from + camera.project_ray_normal(camera.unproject_position(global_transform.origin)) * 500
-			intersection= space_state.intersect_ray(from,to,[dragon_mesh])
+			var ray_query = PhysicsRayQueryParameters3D.new()
+			ray_query.from = from
+			ray_query.to = to
+			ray_query.exclude = [dragon_mesh]
+			ray_query.collide_with_areas = true
+			intersection= space_state.intersect_ray(ray_query)
 	
 	if intersection and is_pressed:
 		if intersection.collider.get_collision_mask()==2 :
-			print('geocyte')
 			update_locked(intersection.collider_id)
 
 func _physics_process(delta):

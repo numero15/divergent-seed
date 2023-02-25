@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Portee - 4 4 4 4 - 60bpm.wav-dd27fa4cc5cd407da10a14ee33fc4a30.sample"
+type="AudioStreamWAV"
+uid="uid://u54s6hlqt8lm"
+path="res://.godot/imported/Portee - 4 4 4 4 - 60bpm.wav-dd27fa4cc5cd407da10a14ee33fc4a30.sample"
 
 [deps]
 
 source_file="res://audio/portees/Portee - 4 4 4 4 - 60bpm.wav"
-dest_files=[ "res://.import/Portee - 4 4 4 4 - 60bpm.wav-dd27fa4cc5cd407da10a14ee33fc4a30.sample" ]
+dest_files=["res://.godot/imported/Portee - 4 4 4 4 - 60bpm.wav-dd27fa4cc5cd407da10a14ee33fc4a30.sample"]
 
 [params]
 

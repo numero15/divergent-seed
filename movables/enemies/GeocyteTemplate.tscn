@@ -1,15 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dikv75c41j3h3"]
 
-[ext_resource path="res://movables/StateMachine.gd" type="Script" id=1]
-[ext_resource path="res://movables/enemies/old/Enemy.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://movables/StateMachine.gd" id="1"]
+[ext_resource type="Script" path="res://movables/enemies/GeocyteTemplate.gd" id="1_q81pm"]
 
-[node name="Geocyte" type="KinematicBody" groups=["BulletListeners"]]
+[node name="Geocyte" type="CharacterBody3D" groups=["BulletListeners"]]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource( 2 )
-lockLineDuration = 2
+script = ExtResource("1_q81pm")
 
 [node name="Partition" type="Node" parent="."]
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 1 )
+script = ExtResource("1")

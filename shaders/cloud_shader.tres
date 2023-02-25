@@ -5,7 +5,7 @@ code = "//https://www.youtube.com/watch?v=5MfcliFqjnE&list=LL&index=1
 
 shader_type spatial;
 
-uniform vec4 out_color : hint_color= vec4(0.0,0.2,1.0,1.0);
+uniform vec4 out_color : source_color= vec4(0.0,0.2,1.0,1.0);
 uniform float transparency = 1.0;
 
 void fragment(){

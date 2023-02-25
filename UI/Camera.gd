@@ -1,4 +1,4 @@
-extends Camera
+extends Camera3D
 #
 #export(NodePath) onready var target = get_node(target)
 #

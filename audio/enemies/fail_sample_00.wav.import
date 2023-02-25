@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/fail_sample_00.wav-c744f783982d6457fb5e289d868fafa4.sample"
+type="AudioStreamWAV"
+uid="uid://bvj6pymhg08s3"
+path="res://.godot/imported/fail_sample_00.wav-c744f783982d6457fb5e289d868fafa4.sample"
 
 [deps]
 
 source_file="res://audio/enemies/fail_sample_00.wav"
-dest_files=[ "res://.import/fail_sample_00.wav-c744f783982d6457fb5e289d868fafa4.sample" ]
+dest_files=["res://.godot/imported/fail_sample_00.wav-c744f783982d6457fb5e289d868fafa4.sample"]
 
 [params]
 

@@ -1,9 +1,9 @@
-extends Spatial
+extends Node3D
 
-export (NodePath) var pivot
-export var r = 2.0
-export var theta = .5
-export var phi = 1.0
+@export  var pivot:NodePath
+@export var r = 2.0
+@export var theta = .5
+@export var phi = 1.0
 var _ori = Vector3.ZERO
 
 func _ready():

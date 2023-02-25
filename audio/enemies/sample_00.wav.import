@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sample_00.wav-0989a2835ca11df8d65e8cda3dca2362.sample"
+type="AudioStreamWAV"
+uid="uid://bfw320jy0hd5s"
+path="res://.godot/imported/sample_00.wav-0989a2835ca11df8d65e8cda3dca2362.sample"
 
 [deps]
 
 source_file="res://audio/enemies/sample_00.wav"
-dest_files=[ "res://.import/sample_00.wav-0989a2835ca11df8d65e8cda3dca2362.sample" ]
+dest_files=["res://.godot/imported/sample_00.wav-0989a2835ca11df8d65e8cda3dca2362.sample"]
 
 [params]
 
